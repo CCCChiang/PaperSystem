@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    {% include "header.html" %}
+
+    <body>
+        <!-- header -->
+        <header class="p-3 bg-dark text-white">
+            <div class="container" style='padding: 0px'>
+              <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                  <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+                </a>
+        
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                  <li><a id="index-home" href="" class="nav-link px-2 text-secondary">Home</a></li>
+                  <!-- <li><a href="#" class="nav-link px-2 text-white">Features</a></li> -->
+                  <!-- <li>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Features
+                      </button>
+                      <div class="dropdown-menu">
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                      </div>
+                    </div>
+                  </li> -->
+
+                  <li>
+                    <div class="btn-group">
+                      <a id="paper-signup" href="">
+                        <button type="button" class="btn btn-info">
+                          論文註冊
+                        </button>
+                      </a>
+                      <!-- <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                      </div> -->
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="btn-group">
+                      <a id='implement-signup' href="">
+                        <button type="button" class="btn btn-success">
+                          實作註冊
+                        </button>
+                      </a>
+                      <!-- <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                      </div> -->
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="btn-group">
+                      <!-- <button type="button" class="btn btn-outline-light me-2">Login</button> -->
+                      <a id='sign-up-add' href=''>
+                        <button type="button" class="btn btn-warning">
+                          命名管理
+                        </button>
+                      </a>
+                    </div>
+                  </li>
+                  <!-- <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li> -->
+                  <!-- <li><a href="http://127.0.0.1:8000/mltdc/choose/" class="nav-link px-2 text-white">FAQs</a></li>
+                  <li><a href="http://127.0.0.1:8000/mltdc/choose/" class="nav-link px-2 text-white">About</a></li> -->
+                  <li>
+                    <div class="text-end">
+                      <!-- <button type="button" class="btn btn-outline-light me-2">Login</button> -->
+                      <a id='permission-setting' href=''>
+                        <button type="button" class="btn btn-danger">
+                          權限設定
+                        </button>
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+        
+                <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                  <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+                </form> -->
+        
+                
+              </div>
+            </div>
+        </header>
+        
+        <script>
+          document.getElementById("permission-setting").href = location.origin + "/mltdc/index/permission-setting"
+          document.getElementById('sign-up-add').href = location.origin + "/mltdc/index/modify/"
+          document.getElementById("implement-signup").href = location.origin + "/mltdc/index/implement-signup"
+          document.getElementById("paper-signup").href = location.origin + "/mltdc/index/paper-signup"
+          document.getElementById("index-home").href = location.origin + "/mltdc/index"
+        </script>
+        <!-- <script>
+          if (sessionStorage.getItem('administrator')=='andyccchiang' || sessionStorage.getItem('administrator')=='2109133'){
+              document.getElementById('sign-up-add').href = location.origin + "/mltdc/index/modify/"
+          } else{
+              document.getElementById('sign-up-add').href = '#'
+          }
+        </script> -->
+
+        <script>
+          if (sessionStorage.getItem('permission')=="member"){
+            document.getElementById("permission-setting").href = "#"
+            document.getElementById('sign-up-add').href = "#"
+            document.getElementById("implement-signup").href = "#"
+            document.getElementById("paper-signup").href = "#"
+            document.getElementById("index-home").href = location.origin + "/mltdc/index"
+
+            document.getElementById("permission-setting").onclick = function(){javascript:alert('沒有足夠權限!!!')}
+            document.getElementById('sign-up-add').onclick = function(){javascript:alert('沒有足夠權限!!!')}
+            document.getElementById("implement-signup").onclick = function(){javascript:alert('沒有足夠權限!!!')}
+            document.getElementById("paper-signup").onclick = function(){javascript:alert('沒有足夠權限!!!')}
+
+          } else if (sessionStorage.getItem('permission')=="RD"){
+            document.getElementById("permission-setting").href = "#"
+            document.getElementById('sign-up-add').href = location.origin + "/mltdc/index/modify"
+            document.getElementById("implement-signup").href = location.origin + "/mltdc/index/implement-signup"
+            document.getElementById("paper-signup").href = location.origin + "/mltdc/index/paper-signup"
+            document.getElementById("index-home").href = location.origin + "/mltdc/index"
+
+            document.getElementById("permission-setting").onclick = function(){javascript:alert('沒有足夠權限!!!')}
+          } else {
+            document.getElementById("permission-setting").href = location.origin + "/mltdc/index/permission-setting"
+            document.getElementById('sign-up-add').href = location.origin + "/mltdc/index/modify"
+            document.getElementById("implement-signup").href = location.origin + "/mltdc/index/implement-signup"
+            document.getElementById("paper-signup").href = location.origin + "/mltdc/index/paper-signup"
+            document.getElementById("index-home").href = location.origin + "/mltdc/index"
+          }
+        </script>
+
+        <script>
+          if (sessionStorage.getItem('administrator')=='andyccchiang' || sessionStorage.getItem('administrator')=='2109133'){
+            document.getElementById("permission-setting").href = location.origin + "/mltdc/index/permission-setting"
+            document.getElementById('sign-up-add').href = location.origin + "/mltdc/index/modify"
+            document.getElementById("implement-signup").href = location.origin + "/mltdc/index/implement-signup"
+            document.getElementById("paper-signup").href = location.origin + "/mltdc/index/paper-signup"
+            document.getElementById("index-home").href = location.origin + "/mltdc/index"
+          } else{
+              console.log("you are not Andy.")
+          }
+        </script>
+        {% block mainBody %}
+        {% endblock mainBody %}
+    </body>
+</html>

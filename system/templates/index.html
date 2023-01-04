@@ -1,0 +1,1192 @@
+{% extends "base.html" %}
+{% block mainBody %}
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- choose bottom -->
+<!-- <div style='width:50%'>
+
+        <div id='CTR'>
+            paper點閱率
+        </div>
+
+        <div id='number-of-papers-reading'>
+            個人paper閱讀量統計
+        </div>
+        
+    </div> -->
+
+<h1 id='web-title'>
+    <div class="mask">
+        <span data-show>Welcome</span>
+        <span>Welcome</span>
+        <span>Welcome</span>
+        <span>Welcome</span>
+    </div>
+</h1>
+
+<div id='search-form-level'>
+    <form id='search-form'>
+        <div class="form-row align-items-center">
+            <div class="col-sm-3 my-1">
+                <!-- <label class="sr-only" for="inlineFormInputGroupUsername">Username</label> -->
+                <div class="input-group">
+
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </div>
+
+                    <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="輸入檢索詞">
+                </div>
+            </div>
+
+            <div class="col-auto my-1">
+                <button type="button" class="btn btn-primary" id='keysearch_button'>搜尋</button>
+            </div>
+        </div>
+
+        <div id='keysearch-level'>
+            <div class='keysearch'>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch-Project" onkeydown="enter_search()">
+                    <label class="custom-control-label" for="customSwitch-Project">專案</label>
+                </div>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch-OwnerID" onkeydown="enter_search()">
+                    <label class="custom-control-label" for="customSwitch-OwnerID">閱讀者</label>
+                </div>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch-OwnerdoID" onkeydown="enter_search()">
+                    <label class="custom-control-label" for="customSwitch-OwnerdoID">實作者</label>
+                </div>
+            </div>
+
+            <div class='keysearch'>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch-Title" onkeydown="enter_search()">
+                    <label class="custom-control-label" for="customSwitch-Title">論文名稱</label>
+                </div>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch-Methodology" onkeydown="enter_search()" checked >
+                    <label class="custom-control-label" for="customSwitch-Methodology">論文方法</label>
+                </div>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch-Field" onkeydown="enter_search()">
+                    <label class="custom-control-label" for="customSwitch-Field">論文領域</label>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<!-- table -->
+
+<div class="container">
+    <h1>查詢結果</h1>
+
+    <!-- <div id="toolbar">
+            <select class="form-control">
+                    <option value="">Export Basic</option>
+                    <option value="all">Export All</option>
+                    <option value="selected">Export Selected</option>
+            </select>
+    </div> -->
+
+    <table id="table" data-toggle="table" data-search="true" data-filter-control="true" data-show-export="true"
+        data-click-to-select="true" data-toolbar="#toolbar">
+
+        <thead>
+            <tr>
+                <th data-field="rate">我的評分</th>
+                <th data-field="title" data-filter-control="input" data-sortable="true">論文名稱</th>
+                <th data-field="year" data-filter-control="input" data-sortable="true">論文年份</th>
+                <th data-field="field" data-filter-control="input" data-sortable="true">論文領域</th>
+                <th data-field="detail" data-sortable="false">詳細資訊</th>
+            </tr>
+        </thead>
+        <tbody id='tablebody-search'>
+            <!-- </tbody>
+        <tbody> -->
+            <!-- <tr>
+                <th data-field="">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        評分
+                    </button>
+                </th>
+                <td>11233331</td>
+                <td>01/09/2015</td>
+                <td>Français</td>
+                <td><button><i class="fa fa-arrow-right" data-toggle="modal" data-target="#exampleModal"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <th data-field="">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        評分
+                    </button>
+                </th>
+                <td>Eric</td>
+                <td>05/09/2015</td>
+                <td>Philosophie</td>
+                <td><i class="fa fa-paper-plane" data-toggle="modal" data-target="#exampleModal"
+                        style="cursor: pointer;"></i></td>
+            </tr>
+            <tr>
+                <th data-field="">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        評分
+                    </button>
+                </th>
+                <td>Valentin</td>
+                <td>05/09/2015</td>
+                <td>Philosophie</td>
+                <td><i class="fa fa-eye" data-toggle="modal" data-target="#exampleModalLong"
+                        style="cursor: pointer;"></i></td>
+            </tr>
+            <tr>
+                <th data-field="">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        評分
+                    </button>
+                </th>
+                <td>Valérie</td>
+                <td>05/09/2015</td>
+                <td>Philosophie</td>
+                <td>10/20</td>
+            </tr>
+            <tr>
+                <th data-field="">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        評分
+                    </button>
+                </th>
+                <td>Eric</td>
+                <td>01/09/2015</td>
+                <td>Français</td>
+                <td>14/20</td>
+            </tr>
+            <tr>
+                <th data-field="">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        評分
+                    </button>
+                </th>
+                <td>Valérie</td>
+                <td>07/09/2015</td>
+                <td>Mathématiques</td>
+                <td>19/20</td>
+            </tr>
+            <tr>
+                <th data-field="">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        評分
+                    </button>
+                </th>
+                <td>Valentin</td>
+                <td>01/09/2015</td>
+                <td>Français</td>
+                <td>11/20</td>
+            </tr>
+            <tr>
+                <th data-field="">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        評分
+                    </button>
+                </th>
+                <td>Eric</td>
+                <td>01/10/2015</td>
+                <td>Philosophie</td>
+                <td>8/20</td>
+            </tr>
+            <tr>
+                <th data-field="">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        評分
+                    </button>
+                </th>
+                <td>Valentin</td>
+                <td>07/09/2015</td>
+                <td>Mathématiques</td>
+                <td>14/20</td>
+            </tr>
+            <tr>
+                <th data-field="">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        評分
+                    </button>
+                </th>
+                <td>Valérie</td>
+                <td>01/10/2015</td>
+                <td>Philosophie</td>
+                <td>12/20</td>
+            </tr>
+            <tr>
+                <th data-field="">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        評分
+                    </button>
+                </th>
+                <td>Eric</td>
+                <td>07/09/2015</td>
+                <td>Mathématiques</td>
+                <td>14/20</td>
+            </tr>
+            <tr>
+                <th data-field="">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        評分
+                    </button>
+                </th>
+                <td>Valentin</td>
+                <td>01/10/2015</td>
+                <td>Philosophie</td>
+                <td>10/20</td>
+            </tr> -->
+        </tbody>
+    </table>
+</div>
+
+
+<!-- Modal -->
+<div id='star-modal'></div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Fill Your Star</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="content">
+                    <h1>5 Stars Rate</h1>
+                    <span><i class="fa fa-star"></i></span>
+                    <p>Press Star!</p>
+                </div>
+
+                <div class="wrapper">
+                    <input name="ratingRadio" type="radio" id="st1" value="1" />
+                    <label for="st1"></label>
+                    <input name="ratingRadio" type="radio" id="st2" value="2" />
+                    <label for="st2"></label>
+                    <input name="ratingRadio" type="radio" id="st3" value="3" />
+                    <label for="st3"></label>
+                    <input name="ratingRadio" type="radio" id="st4" value="4" />
+                    <label for="st4"></label>
+                    <input name="ratingRadio" type="radio" id="st5" value="5" />
+                    <label for="st5"></label>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal-navs -->
+<div id='paper-modal'></div>
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Paper Info.</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id='modal-body-paper-info'>
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                            role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                            role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
+                            role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        ...</div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">....
+                    </div>
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">.....
+                    </div>
+                </div>
+
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-homea"
+                            role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profilea"
+                            role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contacta"
+                            role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-homea" role="tabpanel"
+                        aria-labelledby="nav-home-tab">zz</div>
+                    <div class="tab-pane fade" id="nav-profilea" role="tabpanel" aria-labelledby="nav-profile-tab">zzz
+                    </div>
+                    <div class="tab-pane fade" id="nav-contacta" role="tabpanel" aria-labelledby="nav-contact-tab">zzzz
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- js: enter for search -->
+<script>
+    var el = document.getElementById("inlineFormInputGroupUsername");
+    el.addEventListener("keypress", function(event) {
+
+        if (event.keyCode==13 || event.keyCode==108){
+            event.preventDefault();
+            let x = [];
+            let y = document.getElementsByClassName('custom-control-input');
+            let z = 0;
+            let checkbox_len = y.length;
+            let search = document.getElementById("inlineFormInputGroupUsername").value;
+
+            for (i = 0; i < checkbox_len; i++) {
+                if (y[i].checked) {
+                    x.push(y[i].id)
+                    z++
+                }
+            }
+            checkbox_input(x, z, search)
+            console.log(x)
+        }
+
+    })
+
+    function enter_search() {
+
+        if (window.event.keyCode==13 ||  window.event.keyCode==108){
+            let x = [];
+            let y = document.getElementsByClassName('custom-control-input');
+            let z = 0;
+            let checkbox_len = y.length;
+            let search = document.getElementById("inlineFormInputGroupUsername").value;
+
+            for (i = 0; i < checkbox_len; i++) {
+                if (y[i].checked) {
+                    x.push(y[i].id)
+                    z++
+                }
+            }
+            checkbox_input(x, z, search)
+            console.log(x)
+        }
+    }
+
+    function checkbox_input(x, y, search) {
+        let formdata = new FormData();
+
+        for (i = 0; i < y; i++) {
+            formdata.append('Search_class', x[i]);
+            console.log(x[i])
+        }
+        formdata.append('Search', search)
+
+        var requestOptions = {
+            method: 'POST',
+            body: formdata,
+            redirect: 'follow'
+        };
+
+        fetch(location.origin + "/mltdc/tdb/api/search_add/", requestOptions)
+            .then(response => response.json())
+            .then(result => search_error_catch(result))
+            .catch(error => console.log('error', error));
+    }
+
+    function search_error_catch(x) {
+        // sessionStorage.setItem('context', JSON.stringify(x))
+        // x = JSON.parse(sessionStorage.getItem('context'))
+        
+        console.log(x)
+        
+        if (x['status'] == 'OK') {
+
+
+            let div_context = document.getElementById('tablebody-search')
+            let modal_context = document.querySelector('#paper-modal')
+            let starmodal_context = document.querySelector('#star-modal')
+
+            var html_str = ``
+            var modal_str = ``
+            var modal_above = ``
+            var modal_bottom = ``
+
+            var starmodal_str = ``
+            var starmodal_above = ``
+
+            for (let key in x['info_dict']) {
+                console.log(key)
+
+                html_str = html_str + `
+                <tr >
+                <th data-field="">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-paperid${key}">
+                        評分
+                    </button>
+                </th>
+                `
+                for (let _key in x['info_dict'][key][0]) {
+                    html_str = html_str + `<td style>${x['info_dict'][key][0][_key]}</td>`
+                }
+
+                html_str = html_str + `
+                <td><button><i class="fa fa-eye" data-toggle="modal" data-target="#exampleModalLong-paperid${key}"></i></button></td>
+                </tr>
+                `
+
+                modal_above = `
+                <div class="modal fade" id=exampleModalLong-paperid${key} tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true"">
+                    <div class="modal-dialog  modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLong-paperid${key}Title">Paper Info.</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                `
+
+                modal_bottom = `
+                                </div>
+                                <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    </div>
+                </div> 
+                `
+                starmodal_above = `
+                <div class="modal fade" id="exampleModal-paperid${key}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Fill Your Star</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="content">
+                                    <h1>5 Stars Rate</h1>
+                                    <span><i class="fa fa-star"></i></span>
+                                    <p>Press Star!</p>
+                                </div>
+
+                                <div class="wrapper" id="wrapper${key}">
+                                    <input onclick="starcount(this)" name="ratingRadio" type="radio" id="st${key}1" value=5 />
+                                    <label for="st${key}1"></label>
+                                    <input onclick="starcount(this)" name="ratingRadio" type="radio" id="st${key}2" value=4 />
+                                    <label for="st${key}2"></label>
+                                    <input onclick="starcount(this)" name="ratingRadio" type="radio" id="st${key}3" value=3 />
+                                    <label for="st${key}3"></label>
+                                    <input onclick="starcount(this)" name="ratingRadio" type="radio" id="st${key}4" value=2 />
+                                    <label for="st${key}4"></label>
+                                    <input onclick="starcount(this)" name="ratingRadio" type="radio" id="st${key}5" value=1 />
+                                    <label for="st${key}5"></label>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `
+
+
+
+                var modal_paper_tag = ``
+                var modal_paper_info = ``
+                var modal_implement_str = ``
+                var modal_implement_tag = ``
+                var modal_implement_info = ``
+                for (let _key in x['info_dict'][key]) {
+                    if (_key == 1) {
+                        modal_paper_tag = modal_paper_tag + `
+                        <nav>
+	                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        `
+
+                        modal_paper_info = modal_paper_info + `
+                        <div class="tab-content" id="nav-tabContent">
+                        `
+                        for (let info_index in x['info_dict'][key][_key]) {
+                            if (x['inner_paper_col'][info_index] == 'ownerid') {
+                                modal_paper_tag = modal_paper_tag + `
+                                <a class="nav-item nav-link active" id="nav-paperinfo${key}${info_index}-tab" data-toggle="tab" href="#nav-paperinfo${key}${info_index}" role="tab" aria-controls="nav-profile" aria-selected="false">${x['inner_paper_col'][info_index]}</a>
+                                `
+
+                                modal_paper_info = modal_paper_info + `
+                                <div class="tab-pane fade show active" id="nav-paperinfo${key}${info_index}" role="tabpanel" aria-labelledby="nav-profile-tab">${x['info_dict'][key][_key][info_index]}</div>
+                                `
+                            } else if (x['inner_paper_col'][info_index] == 'keywords') {
+                                modal_paper_tag = modal_paper_tag + `
+                                <a class="nav-item nav-link" id="nav-paperinfo${key}${info_index}-tab" data-toggle="tab" href="#nav-paperinfo${key}${info_index}" role="tab" aria-controls="nav-profile" aria-selected="false">${x['inner_paper_col'][info_index]}</a>
+                                `
+
+                                modal_paper_info = modal_paper_info + `
+                                <div class="tab-pane fade" id="nav-paperinfo${key}${info_index}" role="tabpanel" aria-labelledby="nav-profile-tab">${item_process(x['info_dict'][key][_key][info_index])}</div>
+                                `
+
+                            } else if (x['inner_paper_col'][info_index] == 'conditions') {
+                                modal_paper_tag = modal_paper_tag + `
+                                <a class="nav-item nav-link" id="nav-paperinfo${key}${info_index}-tab" data-toggle="tab" href="#nav-paperinfo${key}${info_index}" role="tab" aria-controls="nav-profile" aria-selected="false">${x['inner_paper_col'][info_index]}</a>
+                                `
+
+                                modal_paper_info = modal_paper_info + `
+                                <div class="tab-pane fade" id="nav-paperinfo${key}${info_index}" role="tabpanel" aria-labelledby="nav-profile-tab">${item_process(x['info_dict'][key][_key][info_index])}</div>
+                                `
+                            } else if (x['inner_paper_col'][info_index] == 'advantages') {
+                                modal_paper_tag = modal_paper_tag + `
+                                <a class="nav-item nav-link" id="nav-paperinfo${key}${info_index}-tab" data-toggle="tab" href="#nav-paperinfo${key}${info_index}" role="tab" aria-controls="nav-profile" aria-selected="false">${x['inner_paper_col'][info_index]}</a>
+                                `
+
+                                modal_paper_info = modal_paper_info + `
+                                <div class="tab-pane fade" id="nav-paperinfo${key}${info_index}" role="tabpanel" aria-labelledby="nav-profile-tab">${item_process(x['info_dict'][key][_key][info_index])}</div>
+                                `
+                            } else if (x['inner_paper_col'][info_index] == 'disadvantages') {
+                                modal_paper_tag = modal_paper_tag + `
+                                <a class="nav-item nav-link" id="nav-paperinfo${key}${info_index}-tab" data-toggle="tab" href="#nav-paperinfo${key}${info_index}" role="tab" aria-controls="nav-profile" aria-selected="false">${x['inner_paper_col'][info_index]}</a>
+                                `
+
+                                modal_paper_info = modal_paper_info + `
+                                <div class="tab-pane fade" id="nav-paperinfo${key}${info_index}" role="tabpanel" aria-labelledby="nav-profile-tab">${item_process(x['info_dict'][key][_key][info_index])}</div>
+                                `
+                            } else {
+                                modal_paper_tag = modal_paper_tag + `
+                                <a class="nav-item nav-link" id="nav-paperinfo${key}${info_index}-tab" data-toggle="tab" href="#nav-paperinfo${key}${info_index}" role="tab" aria-controls="nav-profile" aria-selected="false">${x['inner_paper_col'][info_index]}</a>
+                                `
+
+                                modal_paper_info = modal_paper_info + `
+                                <div class="tab-pane fade" id="nav-paperinfo${key}${info_index}" role="tabpanel" aria-labelledby="nav-profile-tab">${x['info_dict'][key][_key][info_index]}</div>
+                                `
+                            }
+                        }
+                        modal_paper_tag = modal_paper_tag + `
+                            </div>
+                        </nav>
+                        `
+
+                        modal_paper_info = modal_paper_info + `
+                        </div>
+                        `
+
+                    } else if (_key > 1) {
+                        var modal_implement_tag = ``
+                        var modal_implement_info = ``
+
+                        modal_implement_tag = modal_implement_tag + `
+                        <nav>
+	                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        `
+
+                        modal_implement_info = modal_implement_info + `
+                        <div class="tab-content" id="nav-tabContent">
+                        `
+                        for (let info_index in x['info_dict'][key][_key]) {
+                            if (x['inner_implement_col'][info_index] == 'ownerdoid') {
+                                modal_implement_tag = modal_implement_tag + `
+                                <a class="nav-item nav-link active" id="nav-implementinfo${key}${_key}${info_index}-tab" data-toggle="tab" href="#nav-implementinfo${key}${_key}${info_index}" role="tab" aria-controls="nav-profile" aria-selected="false">${x['inner_implement_col'][info_index]}</a>
+                                `
+
+                                modal_implement_info = modal_implement_info + `
+                                <div class="tab-pane fade show active" id="nav-implementinfo${key}${_key}${info_index}" role="tabpanel" aria-labelledby="nav-profile-tab">${x['info_dict'][key][_key][info_index]}</div>
+                                `
+                            } else if (x['inner_implement_col'][info_index] == 'result') {
+                                modal_implement_tag = modal_implement_tag + `
+                                <a class="nav-item nav-link" id="nav-implementinfo${key}${_key}${info_index}-tab" data-toggle="tab" href="#nav-implementinfo${key}${_key}${info_index}" role="tab" aria-controls="nav-profile" aria-selected="false">${x['inner_implement_col'][info_index]}</a>
+                                `
+
+                                modal_implement_info = modal_implement_info + `
+                                <div class="tab-pane fade" id="nav-implementinfo${key}${_key}${info_index}" role="tabpanel" aria-labelledby="nav-profile-tab">${item_process(x['info_dict'][key][_key][info_index])}</div>
+                                `
+                            } else if (x['inner_implement_col'][info_index] == 'note') {
+                                modal_implement_tag = modal_implement_tag + `
+                                <a class="nav-item nav-link" id="nav-implementinfo${key}${_key}${info_index}-tab" data-toggle="tab" href="#nav-implementinfo${key}${_key}${info_index}" role="tab" aria-controls="nav-profile" aria-selected="false">${x['inner_implement_col'][info_index]}</a>
+                                `
+
+                                modal_implement_info = modal_implement_info + `
+                                <div class="tab-pane fade" id="nav-implementinfo${key}${_key}${info_index}" role="tabpanel" aria-labelledby="nav-profile-tab">${item_process(x['info_dict'][key][_key][info_index])}</div>
+                                `
+                            } else {
+                                modal_implement_tag = modal_implement_tag + `
+                                <a class="nav-item nav-link" id="nav-implementinfo${key}${_key}${info_index}-tab" data-toggle="tab" href="#nav-implementinfo${key}${_key}${info_index}" role="tab" aria-controls="nav-profile" aria-selected="false">${x['inner_implement_col'][info_index]}</a>
+                                `
+
+                                modal_implement_info = modal_implement_info + `
+                                <div class="tab-pane fade" id="nav-implementinfo${key}${_key}${info_index}" role="tabpanel" aria-labelledby="nav-profile-tab">${x['info_dict'][key][_key][info_index]}</div>
+                                `
+                            }
+                        }
+                        modal_implement_tag = modal_implement_tag + `
+                            </div>
+                        </nav>
+                        `
+
+                        modal_implement_info = modal_implement_info + `
+                        </div>
+                        `
+                        modal_implement_str = modal_implement_str + modal_implement_tag + modal_implement_info
+                    }
+
+                }
+                // modal_str = modal_str + modal_above + modal_paper_tag + modal_paper_info + modal_implement_tag + modal_implement_info + modal_bottom
+                modal_str = modal_str + modal_above + modal_paper_tag + modal_paper_info + modal_implement_str + modal_bottom
+                starmodal_str = starmodal_str + starmodal_above
+                
+            }
+
+            var data = []
+            for (let key in x['info_dict']) {
+                var y = {
+                    "rate": `
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-paperid${key}">
+                        評分
+                    </button>
+                    `,
+                    "title": x['info_dict'][key][0][0],
+                    "year": x['info_dict'][key][0][1],
+                    "field": x['info_dict'][key][0][2],
+                    "detail": `
+                    <i onclick="hitcount(this)" class="fa fa-eye" data-toggle="modal" data-target="#exampleModalLong-paperid${key}"></i>
+                    `
+                }
+                data.push(y)
+            }
+            // data.push({
+            //     "rate": `333`,
+            //     "title": 123,
+            //     "year": 55,
+            //     "field": "diff",
+            //     "detail": "ff"
+            // })
+
+            // sessionStorage.setItem('div_context', html_str)
+            // sessionStorage.setItem('modal_context', modal_str)
+
+            $("#table").bootstrapTable("load", data)
+            // div_context.innerHTML = html_str
+            modal_context.innerHTML = modal_str
+            starmodal_context.innerHTML = starmodal_str
+            // div_context.innerHTML = sessionStorage.getItem('div_context')
+            // modal_context.innerHTML = sessionStorage.getItem('modal_context')
+            console.log('OK')
+            
+        } else if(x['status'] == 'No'){
+            let div_context = document.getElementById('tablebody-search');
+            div_context.innerHTML = `
+            <tr class="no-records-found"><td colspan="5">No matching records found</td></tr>
+            `
+        }
+        else {
+            // let status=document.querySelector('#Paper-Error')
+            // status.innerHTML='新增失敗'
+            console.log('NG')
+        }
+    }
+
+    function item_process(x) {
+        let str_list = x
+        let item_str = ``
+
+        if (typeof (x) == 'string') {
+            str_list = x.split(';')
+        }
+
+        item_str = item_str + `<ul>`
+
+        for (let item_index in str_list) {
+
+            item_str = item_str + `<li>${str_list[item_index]}</li>`
+        }
+
+        item_str = item_str + `</ul>`
+
+        return item_str
+    }
+</script>
+
+<!-- js for checkbox(search api) -->
+<script>
+    document.getElementById("keysearch_button").onclick = function () {
+        let x = [];
+        let y = document.getElementsByClassName('custom-control-input');
+        let z = 0;
+        let checkbox_len = y.length;
+        let search = document.getElementById("inlineFormInputGroupUsername").value;
+
+        for (i = 0; i < checkbox_len; i++) {
+            if (y[i].checked) {
+                x.push(y[i].id)
+                z++
+            }
+        }
+        checkbox_input(x, z, search)
+        console.log(x)
+    }
+
+    function checkbox_input(x, y, search) {
+        let formdata = new FormData();
+
+        for (i = 0; i < y; i++) {
+            formdata.append('Search_class', x[i]);
+            console.log(x[i])
+        }
+        formdata.append('Search', search)
+
+        var requestOptions = {
+            method: 'POST',
+            body: formdata,
+            redirect: 'follow'
+        };
+
+        fetch(location.origin + "/mltdc/tdb/api/search_add/", requestOptions)
+            .then(response => response.json())
+            .then(result => search_error_catch(result))
+            .catch(error => console.log('error', error));
+    }
+
+    function search_error_catch(x) {
+        // sessionStorage.setItem('context', JSON.stringify(x))
+        // x = JSON.parse(sessionStorage.getItem('context'))
+        
+        console.log(x)
+        
+        if (x['status'] == 'OK') {
+
+
+            let div_context = document.getElementById('tablebody-search')
+            let modal_context = document.querySelector('#paper-modal')
+            let starmodal_context = document.querySelector('#star-modal')
+
+            var html_str = ``
+            var modal_str = ``
+            var modal_above = ``
+            var modal_bottom = ``
+
+            var starmodal_str = ``
+            var starmodal_above = ``
+
+            for (let key in x['info_dict']) {
+                console.log(key)
+
+                html_str = html_str + `
+                <tr >
+                <th data-field="">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-paperid${key}">
+                        評分
+                    </button>
+                </th>
+                `
+                for (let _key in x['info_dict'][key][0]) {
+                    html_str = html_str + `<td style>${x['info_dict'][key][0][_key]}</td>`
+                }
+
+                html_str = html_str + `
+                <td><button><i class="fa fa-eye" data-toggle="modal" data-target="#exampleModalLong-paperid${key}"></i></button></td>
+                </tr>
+                `
+
+                modal_above = `
+                <div class="modal fade" id=exampleModalLong-paperid${key} tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true"">
+                    <div class="modal-dialog  modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLong-paperid${key}Title">Paper Info.</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                `
+
+                modal_bottom = `
+                                </div>
+                                <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    </div>
+                </div> 
+                `
+                starmodal_above = `
+                <div class="modal fade" id="exampleModal-paperid${key}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Fill Your Star</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="content">
+                                    <h1>5 Stars Rate</h1>
+                                    <span><i class="fa fa-star"></i></span>
+                                    <p>Press Star!</p>
+                                </div>
+
+                                <div class="wrapper" id="wrapper${key}">
+                                    <input onclick="starcount(this)" name="ratingRadio" type="radio" id="st${key}1" value=5 />
+                                    <label for="st${key}1"></label>
+                                    <input onclick="starcount(this)" name="ratingRadio" type="radio" id="st${key}2" value=4 />
+                                    <label for="st${key}2"></label>
+                                    <input onclick="starcount(this)" name="ratingRadio" type="radio" id="st${key}3" value=3 />
+                                    <label for="st${key}3"></label>
+                                    <input onclick="starcount(this)" name="ratingRadio" type="radio" id="st${key}4" value=2 />
+                                    <label for="st${key}4"></label>
+                                    <input onclick="starcount(this)" name="ratingRadio" type="radio" id="st${key}5" value=1 />
+                                    <label for="st${key}5"></label>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `
+
+
+
+                var modal_paper_tag = ``
+                var modal_paper_info = ``
+                var modal_implement_str = ``
+                var modal_implement_tag = ``
+                var modal_implement_info = ``
+                for (let _key in x['info_dict'][key]) {
+                    if (_key == 1) {
+                        modal_paper_tag = modal_paper_tag + `
+                        <nav>
+	                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        `
+
+                        modal_paper_info = modal_paper_info + `
+                        <div class="tab-content" id="nav-tabContent">
+                        `
+                        for (let info_index in x['info_dict'][key][_key]) {
+                            if (x['inner_paper_col'][info_index] == 'ownerid') {
+                                modal_paper_tag = modal_paper_tag + `
+                                <a class="nav-item nav-link active" id="nav-paperinfo${key}${info_index}-tab" data-toggle="tab" href="#nav-paperinfo${key}${info_index}" role="tab" aria-controls="nav-profile" aria-selected="false">${x['inner_paper_col'][info_index]}</a>
+                                `
+
+                                modal_paper_info = modal_paper_info + `
+                                <div class="tab-pane fade show active" id="nav-paperinfo${key}${info_index}" role="tabpanel" aria-labelledby="nav-profile-tab">${x['info_dict'][key][_key][info_index]}</div>
+                                `
+                            } else if (x['inner_paper_col'][info_index] == 'keywords') {
+                                modal_paper_tag = modal_paper_tag + `
+                                <a class="nav-item nav-link" id="nav-paperinfo${key}${info_index}-tab" data-toggle="tab" href="#nav-paperinfo${key}${info_index}" role="tab" aria-controls="nav-profile" aria-selected="false">${x['inner_paper_col'][info_index]}</a>
+                                `
+
+                                modal_paper_info = modal_paper_info + `
+                                <div class="tab-pane fade" id="nav-paperinfo${key}${info_index}" role="tabpanel" aria-labelledby="nav-profile-tab">${item_process(x['info_dict'][key][_key][info_index])}</div>
+                                `
+
+                            } else if (x['inner_paper_col'][info_index] == 'conditions') {
+                                modal_paper_tag = modal_paper_tag + `
+                                <a class="nav-item nav-link" id="nav-paperinfo${key}${info_index}-tab" data-toggle="tab" href="#nav-paperinfo${key}${info_index}" role="tab" aria-controls="nav-profile" aria-selected="false">${x['inner_paper_col'][info_index]}</a>
+                                `
+
+                                modal_paper_info = modal_paper_info + `
+                                <div class="tab-pane fade" id="nav-paperinfo${key}${info_index}" role="tabpanel" aria-labelledby="nav-profile-tab">${item_process(x['info_dict'][key][_key][info_index])}</div>
+                                `
+                            } else if (x['inner_paper_col'][info_index] == 'advantages') {
+                                modal_paper_tag = modal_paper_tag + `
+                                <a class="nav-item nav-link" id="nav-paperinfo${key}${info_index}-tab" data-toggle="tab" href="#nav-paperinfo${key}${info_index}" role="tab" aria-controls="nav-profile" aria-selected="false">${x['inner_paper_col'][info_index]}</a>
+                                `
+
+                                modal_paper_info = modal_paper_info + `
+                                <div class="tab-pane fade" id="nav-paperinfo${key}${info_index}" role="tabpanel" aria-labelledby="nav-profile-tab">${item_process(x['info_dict'][key][_key][info_index])}</div>
+                                `
+                            } else if (x['inner_paper_col'][info_index] == 'disadvantages') {
+                                modal_paper_tag = modal_paper_tag + `
+                                <a class="nav-item nav-link" id="nav-paperinfo${key}${info_index}-tab" data-toggle="tab" href="#nav-paperinfo${key}${info_index}" role="tab" aria-controls="nav-profile" aria-selected="false">${x['inner_paper_col'][info_index]}</a>
+                                `
+
+                                modal_paper_info = modal_paper_info + `
+                                <div class="tab-pane fade" id="nav-paperinfo${key}${info_index}" role="tabpanel" aria-labelledby="nav-profile-tab">${item_process(x['info_dict'][key][_key][info_index])}</div>
+                                `
+                            } else {
+                                modal_paper_tag = modal_paper_tag + `
+                                <a class="nav-item nav-link" id="nav-paperinfo${key}${info_index}-tab" data-toggle="tab" href="#nav-paperinfo${key}${info_index}" role="tab" aria-controls="nav-profile" aria-selected="false">${x['inner_paper_col'][info_index]}</a>
+                                `
+
+                                modal_paper_info = modal_paper_info + `
+                                <div class="tab-pane fade" id="nav-paperinfo${key}${info_index}" role="tabpanel" aria-labelledby="nav-profile-tab">${x['info_dict'][key][_key][info_index]}</div>
+                                `
+                            }
+                        }
+                        modal_paper_tag = modal_paper_tag + `
+                            </div>
+                        </nav>
+                        `
+
+                        modal_paper_info = modal_paper_info + `
+                        </div>
+                        `
+
+                    } else if (_key > 1) {
+                        var modal_implement_tag = ``
+                        var modal_implement_info = ``
+
+                        modal_implement_tag = modal_implement_tag + `
+                        <nav>
+	                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        `
+
+                        modal_implement_info = modal_implement_info + `
+                        <div class="tab-content" id="nav-tabContent">
+                        `
+                        for (let info_index in x['info_dict'][key][_key]) {
+                            if (x['inner_implement_col'][info_index] == 'ownerdoid') {
+                                modal_implement_tag = modal_implement_tag + `
+                                <a class="nav-item nav-link active" id="nav-implementinfo${key}${_key}${info_index}-tab" data-toggle="tab" href="#nav-implementinfo${key}${_key}${info_index}" role="tab" aria-controls="nav-profile" aria-selected="false">${x['inner_implement_col'][info_index]}</a>
+                                `
+
+                                modal_implement_info = modal_implement_info + `
+                                <div class="tab-pane fade show active" id="nav-implementinfo${key}${_key}${info_index}" role="tabpanel" aria-labelledby="nav-profile-tab">${x['info_dict'][key][_key][info_index]}</div>
+                                `
+                            } else if (x['inner_implement_col'][info_index] == 'result') {
+                                modal_implement_tag = modal_implement_tag + `
+                                <a class="nav-item nav-link" id="nav-implementinfo${key}${_key}${info_index}-tab" data-toggle="tab" href="#nav-implementinfo${key}${_key}${info_index}" role="tab" aria-controls="nav-profile" aria-selected="false">${x['inner_implement_col'][info_index]}</a>
+                                `
+
+                                modal_implement_info = modal_implement_info + `
+                                <div class="tab-pane fade" id="nav-implementinfo${key}${_key}${info_index}" role="tabpanel" aria-labelledby="nav-profile-tab">${item_process(x['info_dict'][key][_key][info_index])}</div>
+                                `
+                            } else if (x['inner_implement_col'][info_index] == 'note') {
+                                modal_implement_tag = modal_implement_tag + `
+                                <a class="nav-item nav-link" id="nav-implementinfo${key}${_key}${info_index}-tab" data-toggle="tab" href="#nav-implementinfo${key}${_key}${info_index}" role="tab" aria-controls="nav-profile" aria-selected="false">${x['inner_implement_col'][info_index]}</a>
+                                `
+
+                                modal_implement_info = modal_implement_info + `
+                                <div class="tab-pane fade" id="nav-implementinfo${key}${_key}${info_index}" role="tabpanel" aria-labelledby="nav-profile-tab">${item_process(x['info_dict'][key][_key][info_index])}</div>
+                                `
+                            } else {
+                                modal_implement_tag = modal_implement_tag + `
+                                <a class="nav-item nav-link" id="nav-implementinfo${key}${_key}${info_index}-tab" data-toggle="tab" href="#nav-implementinfo${key}${_key}${info_index}" role="tab" aria-controls="nav-profile" aria-selected="false">${x['inner_implement_col'][info_index]}</a>
+                                `
+
+                                modal_implement_info = modal_implement_info + `
+                                <div class="tab-pane fade" id="nav-implementinfo${key}${_key}${info_index}" role="tabpanel" aria-labelledby="nav-profile-tab">${x['info_dict'][key][_key][info_index]}</div>
+                                `
+                            }
+                        }
+                        modal_implement_tag = modal_implement_tag + `
+                            </div>
+                        </nav>
+                        `
+
+                        modal_implement_info = modal_implement_info + `
+                        </div>
+                        `
+                        modal_implement_str = modal_implement_str + modal_implement_tag + modal_implement_info
+                    }
+
+                }
+                // modal_str = modal_str + modal_above + modal_paper_tag + modal_paper_info + modal_implement_tag + modal_implement_info + modal_bottom
+                modal_str = modal_str + modal_above + modal_paper_tag + modal_paper_info + modal_implement_str + modal_bottom
+                starmodal_str = starmodal_str + starmodal_above
+                
+            }
+
+            var data = []
+            for (let key in x['info_dict']) {
+                var y = {
+                    "rate": `
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-paperid${key}">
+                        評分
+                    </button>
+                    `,
+                    "title": x['info_dict'][key][0][0],
+                    "year": x['info_dict'][key][0][1],
+                    "field": x['info_dict'][key][0][2],
+                    "detail": `
+                    <i onclick="hitcount(this)" class="fa fa-eye" data-toggle="modal" data-target="#exampleModalLong-paperid${key}"></i>
+                    `
+                }
+                data.push(y)
+            }
+            // data.push({
+            //     "rate": `333`,
+            //     "title": 123,
+            //     "year": 55,
+            //     "field": "diff",
+            //     "detail": "ff"
+            // })
+
+            // sessionStorage.setItem('div_context', html_str)
+            // sessionStorage.setItem('modal_context', modal_str)
+
+            $("#table").bootstrapTable("load", data)
+            // div_context.innerHTML = html_str
+            modal_context.innerHTML = modal_str
+            starmodal_context.innerHTML = starmodal_str
+            // div_context.innerHTML = sessionStorage.getItem('div_context')
+            // modal_context.innerHTML = sessionStorage.getItem('modal_context')
+            console.log('OK')
+            
+        } else if(x['status'] == 'No'){
+            let div_context = document.getElementById('tablebody-search');
+            div_context.innerHTML = `
+            <tr class="no-records-found"><td colspan="5">No matching records found</td></tr>
+            `
+        }
+        else {
+            // let status=document.querySelector('#Paper-Error')
+            // status.innerHTML='新增失敗'
+            console.log('NG')
+        }
+    }
+
+    function item_process(x) {
+        let str_list = x
+        let item_str = ``
+
+        if (typeof (x) == 'string') {
+            str_list = x.split(';')
+        }
+
+        item_str = item_str + `<ul>`
+
+        for (let item_index in str_list) {
+
+            item_str = item_str + `<li>${str_list[item_index]}</li>`
+        }
+
+        item_str = item_str + `</ul>`
+
+        return item_str
+    }
+</script>
+<!-- js for word -->
+<script>
+    setInterval(function () {
+        const show = document.querySelector('span[data-show]')
+        const next = show.nextElementSibling || document.querySelector('span:first-child')
+        const up = document.querySelector('span[data-up]')
+
+        if (up) {
+            up.removeAttribute('data-up')
+        }
+
+        show.removeAttribute('data-show')
+        show.setAttribute('data-up', '')
+
+        next.setAttribute('data-show', '')
+    }, 2000)
+</script>
+
+<!-- js for hitcount -->
+<script>
+    function hitcount(x){
+        let formdata = new FormData();
+        let paperid = x.getAttribute("data-target").substr(-1)
+        console.log(paperid)
+        formdata.append('Paperid', paperid);
+
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    }
+
+    fetch(location.origin + "/mltdc/tdb/api/hitcount_add/", requestOptions)
+        .then(response => response.json())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    }
+</script>
+
+<!-- js for starcount -->
+<script>
+    function starcount(x){
+        let formdata = new FormData();
+        let st = x.value
+        let paperid = x.parentNode.id.substr(-1)
+        let ownerid = sessionStorage.getItem('ownerid')
+        console.log(st)
+        console.log(paperid)
+        formdata.append('Star', st);
+        formdata.append('Paperid', paperid);
+        formdata.append('Ownerid', ownerid);
+
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    }
+
+    fetch(location.origin + "/mltdc/tdb/api/star_add/", requestOptions)
+        .then(response => response.json())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    }
+</script>
+<!-- footer -->
+<footer class="py-3 my-4">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <!-- <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li> -->
+    </ul>
+    <p class="text-center text-muted"> © 2022 Company, Inc</p>
+</footer>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+<script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.16.0/extensions/auto-refresh/bootstrap-table-auto-refresh.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.15.4/extensions/auto-refresh/bootstrap-table-auto-refresh.min.js"></script>
+
+
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-table@1.21.1/dist/bootstrap-table.min.js"></script> -->
+{% endblock mainBody %}

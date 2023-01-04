@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+{% block mainBody %}
+{% load my_tag %}
+
+{% for paper_id, paper_link, owner_id, paper_name, paper_data in results %}
+
+<div class="d-flex text-muted pt-3">
+  <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg"
+    role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">
+    <title>Placeholder</title>
+    <rect width="100%" height="100%" fill="#5555ff"></rect><text x="50%" y="50%" fill="#5555ff" dy=".3em">32x32</text>
+  </svg>
+
+  <div class="pb-3 mb-0 small lh-sm border-bottom">
+    <a href='{{paper_link}}'><strong class="d-block text-gray-dark"><span onmouseover="hitcount(this)">@{{paper_name}}</span></strong></a>
+    {{owner_id}}
+  </div>
+</div>
+
+<p>
+  {% for key, value in paper_data.items %}
+  {% if forloop.first %}
+<p></p>
+{% else %}
+{% if forloop.counter < 13 %} <a class="btn btn-primary" data-toggle="collapse" href={% ind key paper_id True %}
+  role="button" aria-expanded="false" aria-controls="collapseExample" style='background-color:#A13197;border-color:#A13197'>
+  {{key}}
+  <div class='tips'>
+    {% tips_mapping key %}
+  </div>
+  </a>
+
+  {% endif %}
+  {% endif %}
+  {% endfor %}
+  </p>
+
+  <p>
+    {% for key, value in paper_data.items %}
+    {% if forloop.first %}
+  <p></p>
+  {% else %}
+  {% if forloop.counter > 12 %}
+
+  <a class="btn btn-primary" data-toggle="collapse" href={% ind key paper_id True %} role="button" aria-expanded="false"
+    aria-controls="collapseExample" style='background-color:#7b4b83;border-color:#7b4b83'>
+    {{key}}
+    <div class='tips'>
+      {% tips_mapping key %}
+    </div>
+  </a>
+
+  {% endif %}
+  {% endif %}
+  {% endfor %}
+  </p>
+  <div>
+    
+      <a class="btn btn-primary" data-toggle="collapse" href={% ind_clickall paper_id True %} role="button"
+        aria-expanded="false" aria-controls="collapseExample" style='background-color:#715CA8;border-color:#715CA8'>
+        ClickALL
+        <div class="tips">
+          全部資訊
+        </div>
+      </a>
+
+      <a class="btn btn-primary" data-toggle="collapse" href={% ind_distillation paper_id True %} role="button"
+        aria-expanded="false" aria-controls="collapseExample" style='background-color:#715CA8;border-color:#715CA8'>
+        Distillation
+        <div class="tips">
+          主要資訊
+        </div>
+
+      </a>
+   
+  </div>
+  {% for key, value in paper_data.items %}
+  {% if forloop.first %}
+  <p></p>
+  {% else %}
+  <div class="collapse" id={% ind key paper_id False %}>
+    <div class="card card-body">
+      <ul id='sentence-item'></ul>
+      <h4>{{key}}</h4>
+      {% for segmentation in value %}
+      <li>{{segmentation}}</li>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+
+
+  {% for key, value in paper_data.items %}
+  {% if forloop.first %}
+  <p></p>
+  {% else %}
+  <div class="collapse" id={% ind_clickall paper_id False %}>
+    <div class="card card-body">
+      <ul id='sentence-item'></ul>
+      <h4>{{key}}</h4>
+      {% for segmentation in value %}
+      <li>{{segmentation}}</li>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+
+  {% for key, value in paper_data.items %}
+  {% if forloop.counter in distillation_index %}
+  <div class="collapse" id={% ind_distillation paper_id False %}>
+    <div class="card card-body">
+      <ul id='sentence-item'></ul>
+      <h4>{{key}}</h4>
+      {% for segmentation in value %}
+      <li>{{segmentation}}</li>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+
+  {% endfor %}
+
+  <script>
+
+    function hitcount(x){
+      let formdata = new FormData();
+      let title = x.innerHTML
+      console.log(title)
+        formdata.append('Title', title);
+
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    }
+
+    fetch(location.origin + "/mltdc/tdb/api/hitcount_add/", requestOptions)
+        .then(response => response.json())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    }
+  </script>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  {% endblock mainBody %}

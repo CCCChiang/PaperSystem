@@ -1,0 +1,358 @@
+{% extends "base.html" %}
+{% block mainBody %}
+
+<!-- <div id='paper' style='margin-right: 10px;'>
+    <a class="btn btn-primary" data-toggle="collapse" href="#paper-input" role="button" aria-expanded="false" aria-controls="collapseExample">
+    論文閱讀紀錄
+    </a>
+</div> -->
+
+<div id="paper-input">
+    <h1>Owner Review</h1>
+    <form class="was-validated">
+        <div id='ownerreview-select'>
+            
+            {% comment %}
+            <!-- ownerid select-->
+            <div class="form-group" style='padding-left: 10px; margin: 10px;'>
+                <select class="custom-select" required>
+                <option value="">Choose the ownerid</option>
+
+                {% for ownerid in OwnerID %}
+                    <option value='{{ownerid}}'> {{ownerid}} </option>
+                {% endfor %}
+
+                </select>
+                <div class="invalid-feedback">選擇你的工號</div>
+            </div>  
+            {% endcomment %}
+
+            <!-- Field select-->
+            <div class="form-group" style='padding-left: 10px; margin: 10px;'>
+                <select class="custom-select" required>
+                <option value="">Choose the Field</option>
+
+                {% for field in Field %}
+                    <option value='{{field}}'> {{field}} </option>
+                {% endfor %}
+
+                </select>
+                <div class="invalid-feedback">選擇論文的領域</div>
+            </div>  
+
+            <!-- Year select -->
+            <div class="form-group" style='padding-left: 10px; margin: 10px;'>
+                <select class="custom-select" required>
+                <option value="">Choose the year</option>
+
+                {% for year in Year %}
+                    <option value='{{year}}'> {{year}} </option>
+                {% endfor %}
+
+                </select>
+                <div class="invalid-feedback">選擇論文的年份</div>
+            </div> 
+
+            {% comment %}
+            <!-- project select -->
+            <div class="form-group" style='padding-left: 10px; margin: 10px;'>
+                <select class="custom-select" required>
+                <option value="">Choose the project</option>
+                <!-- <option value='nothing'> 無 </option> -->
+
+                {% for project in Project %}
+                    <option value='{{project}}'> {{project}} </option>
+                {% endfor %}
+
+                </select>
+                <div class="invalid-feedback">選擇論文的應用專案</div>
+            </div> 
+            {% endcomment %}
+
+            <!-- methodology select -->
+            <!-- <div class="form-group" style='padding-left: 10px; margin: 10px;'>
+                <select class="custom-select" required>
+                <option value="">Choose the methodology</option>
+
+                {% for methodology in Methodology %}
+                    <option value='{{methodology}}'> {{methodology}} </option>
+                {% endfor %}
+                
+                </select>
+                <div class="invalid-feedback">選擇論文主要用到的方法</div>
+            </div>  -->
+
+        </div> 
+
+        <div id='ownerreview-checkbox'>
+
+            <div id="checkbox">
+                <div>
+                    {% for methodology in Methodology %}
+                        <label>
+                            <input type="checkbox" name="methodology" value="{{methodology}}"  />
+                            <span class="round button">{{methodology}}</span>
+                        </label>
+                    {% endfor %}  
+                </div>                
+            </div>
+
+            <span style='color:#CC0000; font-size:14px'>
+                (複選)選擇論文主要用到的方法
+            </span>
+
+        </div>
+
+        <!-- ownerreview -->
+        <div id='ownerreview'>
+
+            <!-- ownerreview-title -->
+            <div class='ownerreview-top'>
+
+                <div class='ownerreview-title'>
+                    <div class="input-group input-group-sm mb-3">
+                        
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Title</span>
+                        </div>
+                        
+                        <input type="text" class="form-control" id='Title' aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: Multi-head CNN–RNN for multi-time series anomaly detection: An industrial case study" value="ETSformer: Exponential Smoothing Transformers for Time-series Forecasting" required>
+                        <div class="invalid-feedback">輸入論文的標題</div>
+
+                    </div>
+                </div>
+
+                <!-- ownerreview-paperlink -->
+                <div class='ownerreview-paperlink'>
+                    <div class="input-group input-group-sm mb-3">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Paper-link</span>
+                        </div>
+
+                        <input type="text" class="form-control" id=Link aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: https://nottingham-repository.worktribe.com/index.php/preview/2315217/Multi_Time_Series_Anomaly_Detection_for_Industry_4_0__Neurocomputing_.pdf" value="https://arxiv.org/pdf/2202.01381.pdf" required>
+                        <div class="invalid-feedback">輸入論文的pdf連結</div>
+                    
+                    </div>
+                </div>
+
+                <!-- ownerreview-githublink -->
+                <div class='ownerreview-githublink'>
+                    <div class="input-group input-group-sm mb-3">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Github-link</span>
+                        </div>
+
+                        <input type="text" class="form-control" id=Link aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: https://github.com/salesforce/ETSformer" value="https://github.com/salesforce/ETSformer">
+                        <div class="invalid-feedback">輸入論文的github連結，若沒有請填no</div>
+                    
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; height: 30%;">
+
+                <div class='ownerreview-short'>
+                    
+                    <!-- Author -->
+                    <div class="input-group input-group-sm mb-3">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Author</span>
+                        </div>
+
+                        <input type="text" class="form-control" id=Author aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: Gerald Woo" value="Gerald Woo" required>
+                        <div class="invalid-feedback">輸入論文的第一作者</div>
+                    
+                    </div>
+
+                    <!-- Periodical -->
+                    <div class="input-group input-group-sm mb-3">
+                        
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Periodical</span>
+                        </div>
+                        
+                        <input type="text" class="form-control" id=Periodical aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: arXiv"  value="arXiv" required>
+                        <div class="invalid-feedback">輸入論文的發表期刊</div>
+                    
+                    </div>
+
+                    <!-- Keywords -->
+                    <div class="input-group input-group-sm mb-3">
+                        
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Keywords</span>
+                        </div>
+                        
+                        <input type="text" class="form-control" id=Keywords aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: Exponential Smoothing;Transformers;Time Series" value="Exponential Smoothing;Transformers;Time Series" required>
+                        <div class="invalid-feedback">用分號(;)隔開輸入論文的關鍵字</div>
+                    
+                    </div>
+
+                </div>
+
+                <div class='ownerreview-long'>
+                    <!-- Conditions -->
+                    <div class="input-group">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Conditions</span>
+                        </div>
+                        
+                        <textarea class="form-control" id=Conditions aria-label="With textarea" placeholder="Ex: 多變量時序預測;y是數值型變數" required>多變量時序預測;y是數值型變數</textarea>
+                        <div class="invalid-feedback">用分號(;)隔開作為列點式輸入論文方法的使用條件</div>
+                    
+                    </div>
+
+                    <!-- Advantages -->
+                    <div class="input-group">
+                        
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Advantages</span>
+                        </div>
+                        
+                        <textarea class="form-control" id=Advantages aria-label="With textarea" placeholder="Ex: 模型表現對於中長期的時序預測表現不錯;能抓到季節性的特徵;有引入統計時序概念作處理，結果具有可解釋性;運算速度比原始transformer-based的模型好" required>模型表現對於中長期的時序預測表現不錯;能抓到季節性的特徵;有引入統計時序概念作處理，結果具有可解釋性;運算速度比原始transformer-based的模型好</textarea>
+                        <div class="invalid-feedback">用分號(;)隔開作為列點式輸入論文方法的優點</div>
+                    
+                    </div>
+            
+                    <!-- Disadvantages -->
+                    <div class="input-group">
+                        
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Disadvantages</span>
+                        </div>
+                        
+                        <textarea class="form-control" id=Disadvantages aria-label="With textarea" placeholder="Ex: 尚未加入額外周期因素，如: 假日周期" required>尚未加入額外周期因素，如: 假日周期</textarea>
+                        <div class="invalid-feedback">用分號(;)隔開作為列點式輸入論文方法的缺點</div>
+                    
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class='ownerreview-long1'>
+
+                <!-- Abstract -->
+                <div class="input-group" style="padding: 10px;">
+                    
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Abstract</span>
+                    </div>
+                    
+                    <textarea class="form-control" id=Experiments aria-label="With textarea" placeholder="Ex: 近年來，Transformer已被積極研究用於時間序列預測。雖然經常在各種場景中顯示出可喜的結果，但傳統的Transformer並沒有被設計為充分利用時間序列數據的特徵，因此受到一些基本限制，例如，它們通常不可分解或不可解釋，並且對於長期使用既不有效也不高效。在本文中，我們提出了 ETSformer，這是一種新穎的時間序列 Transformer 架構，它利用指數平滑原理來改進 Transformer 以進行時間序列預測。特別是，受時間序列預測中經典的指數平滑方法的啟發，我們提出了新的指數平滑注意（ESA）和頻率注意（FA）來代替普通Transformer中的自我注意機制，從而提高準確性和效率。基於這些，我們重新設計了帶有模塊化分解塊的 Transformer 架構，以便它可以學習將時間序列數據分解為可解釋的時間序列組件，例如水平、增長和季節性。在各種時間序列基準上進行的大量實驗驗證了所提出方法的有效性和優勢。程式碼可在 https://github.com/salesforce/ETSformer 獲得"  required>近年來，Transformer已被積極研究用於時間序列預測。雖然經常在各種場景中顯示出可喜的結果，但傳統的Transformer並沒有被設計為充分利用時間序列數據的特徵，因此受到一些基本限制，例如，它們通常不可分解或不可解釋，並且對於長期使用既不有效也不高效。在本文中，我們提出了 ETSformer，這是一種新穎的時間序列 Transformer 架構，它利用指數平滑原理來改進 Transformer 以進行時間序列預測。特別是，受時間序列預測中經典的指數平滑方法的啟發，我們提出了新的指數平滑注意（ESA）和頻率注意（FA）來代替普通Transformer中的自我注意機制，從而提高準確性和效率。基於這些，我們重新設計了帶有模塊化分解塊的 Transformer 架構，以便它可以學習將時間序列數據分解為可解釋的時間序列組件，例如水平、增長和季節性。在各種時間序列基準上進行的大量實驗驗證了所提出方法的有效性和優勢。程式碼可在 https://github.com/salesforce/ETSformer 獲得</textarea>
+                    <div class="invalid-feedback">用分號(;)隔開作為列點式輸入論文方法的摘要</div>
+                
+                </div>
+
+                <!-- Conclusions -->
+                <div class="input-group" style="padding: 10px;">
+                    
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Conclusions</span>
+                    </div>
+                    
+                    <textarea class="form-control" id=Conclusions aria-label="With textarea" placeholder="Ex: 受用於時間序列預測的經典指數平滑方法和新興的 Transformer 方法的啟發，我們提出了 ETSformer，這是一種基於 Transformer 的新型時間序列預測架構，它學習水平、增長和季節性潛在表示及其複雜的依賴關係。 ETSformer 利用了新穎的指數平滑注意和頻率注意機制，它們在時間序列建模方面比普通的自我注意機制更有效，同時實現了 O(Llog L) 複雜度，其中 L 是回溯窗口的長度。 我們廣泛的實證評估表明，ETSformer 實現了最先進的性能，分別在多變量和單變量預測的多種設置中，擊敗了競爭基線。 未來的方向包括包括額外的協變量，例如假期指標和其他虛擬變量，以考慮 FA 機制無法捕捉的假期效應" required>受用於時間序列預測的經典指數平滑方法和新興的 Transformer 方法的啟發，我們提出了 ETSformer，這是一種基於 Transformer 的新型時間序列預測架構，它學習水平、增長和季節性潛在表示及其複雜的依賴關係。 ETSformer 利用了新穎的指數平滑注意和頻率注意機制，它們在時間序列建模方面比普通的自我注意機制更有效，同時實現了 O(Llog L) 複雜度，其中 L 是回溯窗口的長度。 我們廣泛的實證評估表明，ETSformer 實現了最先進的性能，分別在多變量和單變量預測的多種設置中，擊敗了競爭基線。 未來的方向包括包括額外的協變量，例如假期指標和其他虛擬變量，以考慮 FA 機制無法捕捉的假期效應</textarea>
+                    <div class="invalid-feedback">用分號(;)隔開作為列點式輸入論文方法的結論</div>
+                
+                </div>
+
+            </div>    
+
+        </div>
+
+        <div id='Paper-Error' style="text-align: center;margin-bottom: 10px; color: brown;">
+
+        </div>
+
+        <div style="display: flex; justify-content: center; margin-bottom: 10px;">
+            <button type="button" class="btn btn-outline-dark" id='paper_add_button'>Upload</button>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    document.getElementById("paper_add_button").onclick = function(){
+        let x=[];
+        let y = document.getElementsByName('methodology');
+        let z = 0;
+        let ownerreview_len = document.getElementById("ownerreview").getElementsByClassName("form-control").length;
+        let ownerreviewselect_len = document.getElementById("ownerreview-select").getElementsByClassName("custom-select").length
+
+        for(i=0; i<ownerreview_len; i++){
+            x.push(document.getElementById("ownerreview").getElementsByClassName("form-control")[i].value)
+        }
+
+        x.push(sessionStorage.getItem('ownerid'))
+        for(i=0; i<ownerreviewselect_len; i++){
+            x.push(document.getElementById("ownerreview-select").getElementsByClassName("custom-select")[i].value)
+        }
+
+        for(i=0; i<y.length; i++){
+            if (y[i].checked){
+                x.push(y[i].value);
+                z++
+            }
+        }
+
+        paper_add(x, z)
+        console.log(x)
+    }
+
+    function paper_add(x, y){
+        let formdata = new FormData();
+        col= ['Title','Paperlink','Githublink','Author','Periodical','Keywords',
+                'Conditions','Advantages','Disadvantages','Abstract','Conclusions',
+                'OwnerID', 'Field','Year'
+        ]
+
+        for  (i=0; i<y; i++){
+            col.push('Methodology')
+        }
+
+        for(i=0; i<col.length+y; i++){
+            formdata.append(col[i], x[i]);
+            console.log(col[i])
+            console.log(x[i])
+        }
+
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    fetch(location.origin + "/mltdc/tdb/api/paper_add/", requestOptions)
+        .then(response => response.json())
+        .then(result => paper_error_catch(result))
+        .catch(error => console.log('error', error));
+    }
+
+    function paper_error_catch(x){
+        console.log(x['status'])
+        if (x['status']=='OK'){
+            let status=document.querySelector('#Paper-Error')
+            status.innerHTML='新增成功'
+        }else{
+            let status=document.querySelector('#Paper-Error')
+            status.innerHTML='新增失敗'
+        }
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+<script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+{% endblock mainBody %}

@@ -1,0 +1,1354 @@
+<!-- input info. -->
+<!-- OwnerRewiew -->
+<h1 style='margin-top: 10px;padding-left: 10px'>Owner Rewiew</h1>
+<form class="was-validated">
+
+    <div class="form-group" style='padding-left: 10px'>
+        <select class="custom-select" required>
+          <option value="">Choose the Field</option>
+          <option value="DecisionIntelligence">Decision Intelligence</option>
+          <option value="TimeSeries">Time Series</option>
+          <option value="EnergySaving">Energy Saving</option>
+        </select>
+        <div class="invalid-feedback">選擇論文的領域</div>
+    </div>  
+  
+  <!-- </form> -->
+  <div class=ownerreview>
+
+    <div class=ownerreview-title>
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Title</span>
+            </div>
+            <input type="text" class="form-control" id='Title' aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: Multi-head CNN–RNN for multi-time series anomaly detection: An industrial case study" value="Ex: Multi-head CNN–RNN for multi-time series anomaly detection: An industrial case study" required>
+            <div class="invalid-feedback">輸入論文的標題</div>
+        </div>
+    </div>
+    
+    <div class=ownerreview-link>
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Link</span>
+            </div>
+            <input type="text" class="form-control" id=Link aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: https://nottingham-repository.worktribe.com/index.php/preview/2315217/Multi_Time_Series_Anomaly_Detection_for_Industry_4_0__Neurocomputing_.pdf" value="Ex: https://nottingham-repository.worktribe.com/index.php/preview/2315217/Multi_Time_Series_Anomaly_Detection_for_Industry_4_0__Neurocomputing_.pdf" required>
+            <div class="invalid-feedback">輸入論文的pdf連結</div>
+        </div>
+    </div>
+
+    <div class=ownerreview-short>
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">OwnerID</span>
+            </div>
+            <input type="text" class="form-control" id=OwnerID aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: 2109133" value="Ex: 2109133" required>
+            <div class="invalid-feedback">輸入你的工號</div>
+        </div>
+<!-- 
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Field</span>
+            </div>
+            <input type="text" class="form-control" id=Field aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+        </div> -->
+
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Year</span>
+            </div>
+            <input type="text" class="form-control" id=Year aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: 2019" value="Ex: 2019" required>
+            <div class="invalid-feedback">輸入論文的年份</div>
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Author</span>
+            </div>
+            <input type="text" class="form-control" id=Author aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: Mikel Canizo" value="Ex: Mikel Canizo" required>
+            <div class="invalid-feedback">輸入論文的第一作者</div>
+        </div>
+    </div>
+
+    <div class=ownerreview-short>
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Periodical</span>
+            </div>
+            <input type="text" class="form-control" id=Periodical aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: Neurocomputing"  value="Ex: Neurocomputing" required>
+            <div class="invalid-feedback">輸入論文的發表期刊</div>
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Keywords</span>
+            </div>
+            <input type="text" class="form-control" id=Keywords aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: Deep Learning, Anomaly detection, Convolutional Neural Networks, Recurrent Neural Networks, Multi-sensor systems, Industry 4.0" value="Ex: Deep Learning, Anomaly detection, Convolutional Neural Networks, Recurrent Neural Networks, Multi-sensor systems, Industry 4.0" required>
+            <div class="invalid-feedback">輸入論文的關鍵字</div>
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Doi</span>
+            </div>
+            <input type="text" class="form-control" id=Doi aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: 10.1016/j.neucom.2019.07.034" value="Ex: 10.1016/j.neucom.2019.07.034" required>
+            <div class="invalid-feedback">輸入論文的Doi</div>
+            <div class="invalid-feedback">查詢: <a href='http://www.airitischolar.com/doi/search/' style='color: red'>http://www.airitischolar.com/doi/search/</a></div>
+        </div>
+    </div>
+
+    <div class=ownerreview-long>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Conditions</span>
+            </div>
+            <textarea class="form-control" id=Conditions aria-label="With textarea" placeholder="Ex: 多變量時序預測之異常檢測;y是二元類別型變數" required>Ex: 多變量時序預測之異常檢測;y是二元類別型變數</textarea>
+            <div class="invalid-feedback">用分號(;)隔開作為列點式輸入論文方法的使用條件</div>
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Experiments</span>
+            </div>
+            <textarea class="form-control" id=Experiments aria-label="With textarea" placeholder="Ex: 用20個sensor，對電梯進行異常監控的預測，Multi-head Conv1d的表現在RNN, LSTM, GRU, Bi-LSTM, Bi-GRU皆比 Multi-channel Conv1d還好;sensor數量不同的遷移式學習，表現與原數量sensor的效果差不多，有時候會更好"  required>Ex: 用20個sensor，對電梯進行異常監控的預測，Multi-head Conv1d的表現在RNN, LSTM, GRU, Bi-LSTM, Bi-GRU皆比 Multi-channel Conv1d還好;sensor數量不同的遷移式學習，表現與原數量sensor的效果差不多，有時候會更好</textarea>
+            <div class="invalid-feedback">用分號(;)隔開作為列點式輸入論文方法的實驗結果</div>
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Conclusions</span>
+            </div>
+            <textarea class="form-control" id=Conclusions aria-label="With textarea" placeholder="Ex: 提出了一種基於深度學習的有監督多時間序列異常檢測方法，該方法結合了卷積神經網絡和遞歸神經網絡以不同的方式;不同於其他方法，使用獨立的卷積神經網絡，即所謂的捲積頭來處理，在多sensor系統中進行異常檢測;單獨處理每個sensor，避免了數據預處理的需要，並允許更多為每種類型的sensor量身定制的架構" required>Ex: 提出了一種基於深度學習的有監督多時間序列異常檢測方法，該方法結合了卷積神經網絡和遞歸神經網絡以不同的方式;不同於其他方法，使用獨立的卷積神經網絡，即所謂的捲積頭來處理，在多sensor系統中進行異常檢測;單獨處理每個sensor，避免了數據預處理的需要，並允許更多為每種類型的sensor量身定制的架構</textarea>
+            <div class="invalid-feedback">用分號(;)隔開作為列點式輸入論文方法的結論</div>
+        </div>
+    </div>
+
+    <div class=ownerreview-long>
+        <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Advantages</span>
+            </div>
+            <textarea class="form-control" id=Advantages aria-label="With textarea" placeholder="Ex: 不需要對資料做前處理;時間序列被獨立處理以處理異構sensor;能適應新的sensor配置;可以抓到單元動作;工業場景中檢測異常有不錯的效能表現" required>Ex: 不需要對資料做前處理;時間序列被獨立處理以處理異構sensor;能適應新的sensor配置;可以抓到單元動作;工業場景中檢測異常有不錯的效能表現</textarea>
+            <div class="invalid-feedback">用分號(;)隔開作為列點式輸入論文方法的優點</div>
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Disadvantages</span>
+            </div>
+            <textarea class="form-control" id=Disadvantages aria-label="With textarea" placeholder="Ex: 模型參數量龐大" required>Ex: 模型參數量龐大</textarea>
+            <div class="invalid-feedback">用分號(;)隔開作為列點式輸入論文方法的缺點</div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-outline-info" id='Upload'>Upload</button>
+</div>
+</form>
+
+<div id=status></div>
+
+<script>
+document.getElementById("Upload").onclick = function () {
+    let x=[]
+    for(i=0; i<14; i++){
+        x.push(document.getElementById("OwnerRewiew").getElementsByClassName("form-control")[i].value)
+    }
+    x.push(document.getElementById("OwnerRewiew").getElementsByClassName("custom-select").value)
+    add(x)
+    console.log(x)
+}         
+
+function add(x) {
+    var formdata = new FormData();
+    col = ['Title', 'Link', 'OwnerID', 'Year', 'Author', 
+           'Periodical', 'Keywords', 'Doi', 'Conditions', 
+           'Experiments', 'Conclusions', 'Advantages', 'Disadvantages', 'Field'];
+
+    for(i=0; i<14; i++){
+        formdata.append(col[i], x[i]);
+        console.log(col[i])
+        console.log(x[i])
+    }
+   
+    var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    fetch("http://127.0.0.1:8000/mltdc/tdb/api/add/", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    
+    let status=document.querySelector('#status');
+    status.innerHTML='You have uploaded data to MLTDC TDB successfully.'
+}
+</script>
+<!-- <button type="button" class="btn btn-outline-info">Search</button> -->
+
+<h1 style="padding-left: 10px">Owner Do</h1>
+<form class="was-validated" action="" id="OwnerDo" method="post">
+<div class=ownerdo>
+    <div class=ownerdo-short>
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Doi</span>
+            </div>
+            <input type="text" class="form-control" id=ownerdo-Doi aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: 10.1016/j.neucom.2019.07.034" value="Ex: 10.1016/j.neucom.2019.07.034" required>
+            <div class="invalid-feedback">輸入論文的Doi</div>
+            <div class="invalid-feedback">查詢: <a href='http://www.airitischolar.com/doi/search/' style='color: red'>http://www.airitischolar.com/doi/search/</a></div>
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">OwnerID</span>
+            </div>
+            <input type="text" class="form-control" id=ownerdo-OwnerID aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: 2109133" value="Ex: 2109133" required>
+            <div class="invalid-feedback">輸入你的工號</div>
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Date</span>
+            </div>
+            <input type="text" class="form-control" id=ownerdo-Date aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: 2022-08-31" value="Ex: 2022-08-31" required>
+            <div class="invalid-feedback">輸入你開始實作的日期(用-隔開)</div>
+        </div>
+    </div>
+
+    <div class=ownerdo-short>
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">DataSource</span>
+            </div>
+            <input type="text" class="form-control" id=ownerdo-DataSource aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: https://github.com/salesforce/ETSformer"  value="Ex: https://github.com/salesforce/ETSformer" required>
+            <div class="invalid-feedback">輸入分析資料的路徑或網址</div>
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Environment</span>
+            </div>
+            <input type="text" class="form-control" id=ownerdo-Environment aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: AI365" value="Ex: AI365" required>
+            <div class="invalid-feedback">輸入你實作的環境位置</div>
+        </div>
+
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Runtime</span>
+            </div>
+            <input type="text" class="form-control" id=ownerdo-Runtime aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: 15分" value="Ex: 15分" required>
+            <div class="invalid-feedback">輸入你實作的運行時間(從raw data 到 output)</div>
+        </div>
+    </div>
+
+    <div class=ownerdo-long>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+            <span class="input-group-text">OwnerDo</span>
+            </div>
+            <textarea class="form-control" id=ownerdo-OwnerDo aria-label="With textarea" placeholder="Ex: 可以執行，結果尚未驗證" required>Ex: 可以執行，結果尚未驗證</textarea>
+            <div class="invalid-feedback">用分號(;)隔開作為列點式輸入你實作的實驗結果</div>
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+            <span class="input-group-text">Resource</span>
+            </div>
+            <textarea class="form-control" id=ownerdo-Resource aria-label="With textarea" placeholder="Ex: CPU;GPU" required>Ex: CPU;GPU</textarea>
+            <div class="invalid-feedback">用分號(;)隔開作為列點式輸入你實作的資源需求</div>
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+            <span class="input-group-text">Note</span>
+            </div>
+            <textarea class="form-control" id=ownerdo-Note aria-label="With textarea" placeholder="Ex: 參數很多，運行時間確實很長，可以放下去跑做別的事情" required>Ex: 參數很多，運行時間確實很長，可以放下去跑做別的事情</textarea>
+            <div class="invalid-feedback">用分號(;)隔開作為列點式輸入你實作的任何備註</div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-outline-success" id='Success'>Success</button>
+</div>
+</form>
+
+<div id=ownerdo-status></div>
+
+<script>
+document.getElementById("Success").onclick = function () {
+    let x=[]
+    for(i=0; i<9; i++){
+        x.push(document.getElementById("OwnerDo").getElementsByClassName("form-control")[i].value)
+    }
+    ownerdo_add(x)
+    console.log(x)
+}         
+
+function ownerdo_add(x) {
+    var formdata = new FormData();
+    col = ['Doi', 'OwnerID', 'Date', 'DataSource', 'Environment', 
+           'Runtime', 'OwnerDo', 'Resource', 'Note'];
+
+    for(i=0; i<9; i++){
+        formdata.append(col[i], x[i]);
+        console.log(col[i])
+        console.log(x[i])
+    }
+   
+    var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    fetch("http://127.0.0.1:8000/mltdc/tdb/api/ownerdo_add/", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    
+    let status=document.querySelector('#ownerdo-status');
+    status.innerHTML='You have uploaded your Info. to MLTDC TDB successfully.'
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- index 上半部 -->
+<div id='carouselExampleIndicators-top'>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+        <div class="carousel-item active">
+            <a href="http://127.0.0.1:8000/mltdc/index/decision"><img src="https://deepzonetechnologies.com/assets/Images/service/Decision-Intelligence-Image.png" class="d-block w-100" weight=100px height=300px alt="你讓網頁生氣了!!"></a>
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Decision Intelligence</h5>
+                <p>The course of true love never did run smooth.</p>
+            </div>  
+        </div>
+        <div class="carousel-item">
+            <a href="http://127.0.0.1:8000/mltdc/index/timeseries"><img src="https://dpbnri2zg3lc2.cloudfront.net/en/wp-content/uploads/2021/10/time-series-data.jpeg" class="d-block w-100" weight=100px height=300px alt="你讓網頁生氣了!!"></a>
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Time Series</h5>
+                <p>Love is blind and lovers cannot see the pretty follies that themselves commit.</p>
+            </div> 
+        </div>
+        <div class="carousel-item">
+            <a href="http://127.0.0.1:8000/mltdc/index/saving"><img src="https://static.wixstatic.com/media/62e635_1325aba157b048c0812fc85606a3ef68~mv2.png/v1/fill/w_740,h_416,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/62e635_1325aba157b048c0812fc85606a3ef68~mv2.png" class="d-block w-100" weight=100px height=300px alt="你讓網頁生氣了!!"></a>
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Energy Saving</h5>
+                <p>This above all: to thine self be true.</p>
+            </div> 
+        </div>
+        </div>
+        
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+        </a>
+
+        <!-- <div style='display: flex;justify-content: center; position: relative; '>
+            <div class="box"></div>
+        </div> -->
+        
+    </div>
+
+    <div style='width:50%'>
+
+        <div id='CTR'>
+            paper點閱率
+        </div>
+
+        <div id='number-of-papers-reading'>
+            個人paper閱讀量統計
+        </div>
+        
+    </div>
+
+</div>
+
+<!-- index 下半部 -->
+<div style='display: flex;justify-content: center; position: relative; margin-top: 10px;'>
+    <div id='paper' style='margin-right: 10px;'>
+        <a class="btn btn-primary" data-toggle="collapse" href="#paper-input" role="button" aria-expanded="false" aria-controls="collapseExample">
+        論文閱讀紀錄
+        </a>
+    </div>
+
+    <div id='implement'>
+        <a class="btn btn-primary" data-toggle="collapse" href="#implement-input" role="button" aria-expanded="false" aria-controls="collapseExample">
+        論文實作紀錄
+        </a>
+    </div>
+</div>
+
+<div class="collapse" id="paper-input">
+    <h1>Owner Review</h1>
+    <form class="was-validated">
+        <div id='ownerreview-select'>
+            
+            <!-- ownerid select-->
+            <div class="form-group" style='padding-left: 10px; margin: 10px;'>
+                <select class="custom-select" required>
+                <option value="">Choose the ownerid</option>
+
+                {% for ownerid in OwnerID %}
+                    <option value='{{ownerid}}'> {{ownerid}} </option>
+                {% endfor %}
+
+                </select>
+                <div class="invalid-feedback">選擇你的工號</div>
+            </div>  
+
+            <!-- Field select-->
+            <div class="form-group" style='padding-left: 10px; margin: 10px;'>
+                <select class="custom-select" required>
+                <option value="">Choose the Field</option>
+
+                {% for field in Field %}
+                    <option value='{{field}}'> {{field}} </option>
+                {% endfor %}
+
+                </select>
+                <div class="invalid-feedback">選擇論文的領域</div>
+            </div>  
+
+            <!-- Year select -->
+            <div class="form-group" style='padding-left: 10px; margin: 10px;'>
+                <select class="custom-select" required>
+                <option value="">Choose the year</option>
+
+                {% for year in Year %}
+                    <option value='{{year}}'> {{year}} </option>
+                {% endfor %}
+
+                </select>
+                <div class="invalid-feedback">選擇論文的年份</div>
+            </div> 
+
+            <!-- project select -->
+            <div class="form-group" style='padding-left: 10px; margin: 10px;'>
+                <select class="custom-select" required>
+                <option value="">Choose the project</option>
+                <!-- <option value='nothing'> 無 </option> -->
+
+                {% for project in Project %}
+                    <option value='{{project}}'> {{project}} </option>
+                {% endfor %}
+
+                </select>
+                <div class="invalid-feedback">選擇論文的應用專案</div>
+            </div> 
+
+            <!-- methodology select -->
+            <!-- <div class="form-group" style='padding-left: 10px; margin: 10px;'>
+                <select class="custom-select" required>
+                <option value="">Choose the methodology</option>
+
+                {% for methodology in Methodology %}
+                    <option value='{{methodology}}'> {{methodology}} </option>
+                {% endfor %}
+                
+                </select>
+                <div class="invalid-feedback">選擇論文主要用到的方法</div>
+            </div>  -->
+
+        </div> 
+
+        <div id='ownerreview-checkbox'>
+
+            <div id="checkbox">
+                <div>
+                    {% for methodology in Methodology %}
+                        <label>
+                            <input type="checkbox" name="methodology" value="{{methodology}}"  />
+                            <span class="round button">{{methodology}}</span>
+                        </label>
+                    {% endfor %}  
+                </div>                
+            </div>
+
+            <span style='color:#CC0000; font-size:14px'>
+                (複選)選擇論文主要用到的方法
+            </span>
+
+        </div>
+
+        <!-- ownerreview -->
+        <div id='ownerreview'>
+
+            <!-- ownerreview-title -->
+            <div class='ownerreview-top'>
+
+                <div class='ownerreview-title'>
+                    <div class="input-group input-group-sm mb-3">
+                        
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Title</span>
+                        </div>
+                        
+                        <input type="text" class="form-control" id='Title' aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: Multi-head CNN–RNN for multi-time series anomaly detection: An industrial case study" value="ETSformer: Exponential Smoothing Transformers for Time-series Forecasting" required>
+                        <div class="invalid-feedback">輸入論文的標題</div>
+
+                    </div>
+                </div>
+
+                <!-- ownerreview-paperlink -->
+                <div class='ownerreview-paperlink'>
+                    <div class="input-group input-group-sm mb-3">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Paper-link</span>
+                        </div>
+
+                        <input type="text" class="form-control" id=Link aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: https://nottingham-repository.worktribe.com/index.php/preview/2315217/Multi_Time_Series_Anomaly_Detection_for_Industry_4_0__Neurocomputing_.pdf" value="https://arxiv.org/pdf/2202.01381.pdf" required>
+                        <div class="invalid-feedback">輸入論文的pdf連結</div>
+                    
+                    </div>
+                </div>
+
+                <!-- ownerreview-githublink -->
+                <div class='ownerreview-githublink'>
+                    <div class="input-group input-group-sm mb-3">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Github-link</span>
+                        </div>
+
+                        <input type="text" class="form-control" id=Link aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: https://github.com/salesforce/ETSformer" value="https://github.com/salesforce/ETSformer">
+                        <div class="invalid-feedback">輸入論文的github連結，若沒有請填no</div>
+                    
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; height: 30%;">
+
+                <div class='ownerreview-short'>
+                    
+                    <!-- Author -->
+                    <div class="input-group input-group-sm mb-3">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Author</span>
+                        </div>
+
+                        <input type="text" class="form-control" id=Author aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: Gerald Woo" value="Gerald Woo" required>
+                        <div class="invalid-feedback">輸入論文的第一作者</div>
+                    
+                    </div>
+
+                    <!-- Periodical -->
+                    <div class="input-group input-group-sm mb-3">
+                        
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Periodical</span>
+                        </div>
+                        
+                        <input type="text" class="form-control" id=Periodical aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: arXiv"  value="arXiv" required>
+                        <div class="invalid-feedback">輸入論文的發表期刊</div>
+                    
+                    </div>
+
+                    <!-- Keywords -->
+                    <div class="input-group input-group-sm mb-3">
+                        
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Keywords</span>
+                        </div>
+                        
+                        <input type="text" class="form-control" id=Keywords aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: Exponential Smoothing;Transformers;Time Series" value="Exponential Smoothing;Transformers;Time Series" required>
+                        <div class="invalid-feedback">用分號(;)隔開輸入論文的關鍵字</div>
+                    
+                    </div>
+
+                </div>
+
+                <div class='ownerreview-long'>
+                    <!-- Conditions -->
+                    <div class="input-group">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Conditions</span>
+                        </div>
+                        
+                        <textarea class="form-control" id=Conditions aria-label="With textarea" placeholder="Ex: 多變量時序預測;y是數值型變數" required>多變量時序預測;y是數值型變數</textarea>
+                        <div class="invalid-feedback">用分號(;)隔開作為列點式輸入論文方法的使用條件</div>
+                    
+                    </div>
+
+                    <!-- Advantages -->
+                    <div class="input-group">
+                        
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Advantages</span>
+                        </div>
+                        
+                        <textarea class="form-control" id=Advantages aria-label="With textarea" placeholder="Ex: 模型表現對於中長期的時序預測表現不錯;能抓到季節性的特徵;有引入統計時序概念作處理，結果具有可解釋性;運算速度比原始transformer-based的模型好" required>模型表現對於中長期的時序預測表現不錯;能抓到季節性的特徵;有引入統計時序概念作處理，結果具有可解釋性;運算速度比原始transformer-based的模型好</textarea>
+                        <div class="invalid-feedback">用分號(;)隔開作為列點式輸入論文方法的優點</div>
+                    
+                    </div>
+            
+                    <!-- Disadvantages -->
+                    <div class="input-group">
+                        
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Disadvantages</span>
+                        </div>
+                        
+                        <textarea class="form-control" id=Disadvantages aria-label="With textarea" placeholder="Ex: 尚未加入額外周期因素，如: 假日周期" required>尚未加入額外周期因素，如: 假日周期</textarea>
+                        <div class="invalid-feedback">用分號(;)隔開作為列點式輸入論文方法的缺點</div>
+                    
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class='ownerreview-long1'>
+
+                <!-- Abstract -->
+                <div class="input-group">
+                    
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Abstract</span>
+                    </div>
+                    
+                    <textarea class="form-control" id=Experiments aria-label="With textarea" placeholder="Ex: 近年來，Transformer已被積極研究用於時間序列預測。雖然經常在各種場景中顯示出可喜的結果，但傳統的Transformer並沒有被設計為充分利用時間序列數據的特徵，因此受到一些基本限制，例如，它們通常不可分解或不可解釋，並且對於長期使用既不有效也不高效。在本文中，我們提出了 ETSformer，這是一種新穎的時間序列 Transformer 架構，它利用指數平滑原理來改進 Transformer 以進行時間序列預測。特別是，受時間序列預測中經典的指數平滑方法的啟發，我們提出了新的指數平滑注意（ESA）和頻率注意（FA）來代替普通Transformer中的自我注意機制，從而提高準確性和效率。基於這些，我們重新設計了帶有模塊化分解塊的 Transformer 架構，以便它可以學習將時間序列數據分解為可解釋的時間序列組件，例如水平、增長和季節性。在各種時間序列基準上進行的大量實驗驗證了所提出方法的有效性和優勢。程式碼可在 https://github.com/salesforce/ETSformer 獲得"  required>近年來，Transformer已被積極研究用於時間序列預測。雖然經常在各種場景中顯示出可喜的結果，但傳統的Transformer並沒有被設計為充分利用時間序列數據的特徵，因此受到一些基本限制，例如，它們通常不可分解或不可解釋，並且對於長期使用既不有效也不高效。在本文中，我們提出了 ETSformer，這是一種新穎的時間序列 Transformer 架構，它利用指數平滑原理來改進 Transformer 以進行時間序列預測。特別是，受時間序列預測中經典的指數平滑方法的啟發，我們提出了新的指數平滑注意（ESA）和頻率注意（FA）來代替普通Transformer中的自我注意機制，從而提高準確性和效率。基於這些，我們重新設計了帶有模塊化分解塊的 Transformer 架構，以便它可以學習將時間序列數據分解為可解釋的時間序列組件，例如水平、增長和季節性。在各種時間序列基準上進行的大量實驗驗證了所提出方法的有效性和優勢。程式碼可在 https://github.com/salesforce/ETSformer 獲得</textarea>
+                    <div class="invalid-feedback">用分號(;)隔開作為列點式輸入論文方法的摘要</div>
+                
+                </div>
+
+                <!-- Conclusions -->
+                <div class="input-group">
+                    
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Conclusions</span>
+                    </div>
+                    
+                    <textarea class="form-control" id=Conclusions aria-label="With textarea" placeholder="Ex: 受用於時間序列預測的經典指數平滑方法和新興的 Transformer 方法的啟發，我們提出了 ETSformer，這是一種基於 Transformer 的新型時間序列預測架構，它學習水平、增長和季節性潛在表示及其複雜的依賴關係。 ETSformer 利用了新穎的指數平滑注意和頻率注意機制，它們在時間序列建模方面比普通的自我注意機制更有效，同時實現了 O(Llog L) 複雜度，其中 L 是回溯窗口的長度。 我們廣泛的實證評估表明，ETSformer 實現了最先進的性能，分別在多變量和單變量預測的多種設置中，擊敗了競爭基線。 未來的方向包括包括額外的協變量，例如假期指標和其他虛擬變量，以考慮 FA 機制無法捕捉的假期效應" required>受用於時間序列預測的經典指數平滑方法和新興的 Transformer 方法的啟發，我們提出了 ETSformer，這是一種基於 Transformer 的新型時間序列預測架構，它學習水平、增長和季節性潛在表示及其複雜的依賴關係。 ETSformer 利用了新穎的指數平滑注意和頻率注意機制，它們在時間序列建模方面比普通的自我注意機制更有效，同時實現了 O(Llog L) 複雜度，其中 L 是回溯窗口的長度。 我們廣泛的實證評估表明，ETSformer 實現了最先進的性能，分別在多變量和單變量預測的多種設置中，擊敗了競爭基線。 未來的方向包括包括額外的協變量，例如假期指標和其他虛擬變量，以考慮 FA 機制無法捕捉的假期效應</textarea>
+                    <div class="invalid-feedback">用分號(;)隔開作為列點式輸入論文方法的結論</div>
+                
+                </div>
+
+            </div>    
+
+        </div>
+
+        <div id='Paper-Error' style="text-align: center;margin-bottom: 10px; color: brown;">
+
+        </div>
+
+        <div style="display: flex; justify-content: center; margin-bottom: 10px;">
+            <button type="button" class="btn btn-outline-dark" id='paper_add_button'>Upload</button>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    document.getElementById("paper_add_button").onclick = function(){
+        let x=[];
+        let y = document.getElementsByName('methodology');
+        let z = 0;
+        let ownerreview_len = document.getElementById("ownerreview").getElementsByClassName("form-control").length;
+        let ownerreviewselect_len = document.getElementById("ownerreview-select").getElementsByClassName("custom-select").length
+
+        for(i=0; i<ownerreview_len; i++){
+            x.push(document.getElementById("ownerreview").getElementsByClassName("form-control")[i].value)
+        }
+
+        for(i=0; i<ownerreviewselect_len; i++){
+            x.push(document.getElementById("ownerreview-select").getElementsByClassName("custom-select")[i].value)
+        }
+
+        for(i=0; i<y.length; i++){
+            if (y[i].checked){
+                x.push(y[i].value);
+                z++
+            }
+        }
+
+        paper_add(x, z)
+        console.log(x)
+    }
+
+    function paper_add(x, y){
+        let formdata = new FormData();
+        col= ['Title','Paperlink','Githublink','Author','Periodical','Keywords',
+                'Conditions','Advantages','Disadvantages','Abstract','Conclusions',
+                'OwnerID', 'Field','Year', 'Project'
+        ]
+
+        for  (i=0; i<y; i++){
+            col.push('Methodology')
+        }
+
+        for(i=0; i<col.length+y; i++){
+            formdata.append(col[i], x[i]);
+            console.log(col[i])
+            console.log(x[i])
+        }
+
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    fetch(location.origin + "/mltdc/tdb/api/paper_add/", requestOptions)
+        .then(response => response.json())
+        .then(result => paper_error_catch(result))
+        .catch(error => console.log('error', error));
+    }
+
+    function paper_error_catch(x){
+        console.log(x['status'])
+        if (x['status']=='OK'){
+            let status=document.querySelector('#Paper-Error')
+            status.innerHTML='新增成功'
+        }else{
+            let status=document.querySelector('#Paper-Error')
+            status.innerHTML='新增失敗'
+        }
+    }
+</script>
+
+<div class="collapse" id="implement-input">
+    <h1>Owner Do</h1>
+
+    <form class="was-validated">
+
+        <div id='ownerdo-select'>
+            <!-- ownerid select-->
+            <div class="form-group" style='padding-left: 10px; margin: 10px;'>
+                <select class="custom-select" required>
+                <option value="">Choose the ownerid</option>
+
+                {% for ownerid in OwnerID %}
+                    <option value='{{ownerid}}'> {{ownerid}} </option>
+                {% endfor %}
+
+                </select>
+                <div class="invalid-feedback">選擇你的工號</div>
+            </div>
+
+            <!-- Field select-->
+            <div class="form-group" style='padding-left: 10px; margin: 10px;'>
+                <select class="custom-select" required>
+                <option value="">Choose the Field</option>
+
+                {% for field in Field %}
+                    <option value='{{field}}'> {{field}} </option>
+                {% endfor %}
+
+                </select>
+                <div class="invalid-feedback">選擇論文的領域</div>
+            </div>
+
+            <!-- Paper select-->
+            <div class="form-group" style='padding-left: 10px; margin: 10px;'>
+                <select class="custom-select" required>
+                <option value="">Choose the Paper</option>
+
+                {% for paper in Paper %}
+                    <option value='{{paper}}'> {{paper}} </option>
+                {% endfor %}
+
+                </select>
+                <div class="invalid-feedback">選擇論文的名稱</div>
+            </div>
+        </div>
+
+        <div id=ownerdo>
+
+            <!-- ownerdo-short -->
+            <div class='ownerdo-short'>
+
+                <!-- 實作日期 -->
+                <div class="input-group input-group-sm mb-3">
+                    
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Implementdate</span>
+                    </div>
+                    
+                    <input type="text" class="form-control" id=ownerdo-Implementdate aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: 2022-08-31" value="2022-08-31" required>
+                    <div class="invalid-feedback">輸入你開始實作的日期(用-隔開)</div>
+                
+                </div>
+
+                <!-- runtime -->
+                <div class="input-group input-group-sm mb-3">
+                    
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Runtime</span>
+                    </div>
+                    
+                    <input type="text" class="form-control" id=ownerdo-Runtime aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: 1.5" value="1.5" required>
+                    <div class="invalid-feedback">輸入你實作的運行時間(hr)(從raw data 到 output)</div>
+                
+                </div>
+
+                <!-- source -->
+                <div class="input-group input-group-sm mb-3">
+                    
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Source</span>
+                    </div>
+                    
+                    <input type="text" class="form-control" id=ownerdo-Source aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: https://github.com/salesforce/ETSformer"  value="https://github.com/salesforce/ETSformer" required>
+                    <div class="invalid-feedback">輸入分析資料的路徑或網址</div>
+                
+                </div>
+
+            </div>
+
+            <!-- ownerdo-long -->
+            <div class='ownerdo-long'>
+
+                <!-- result -->
+                <div class="input-group">
+                    
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Result</span>
+                    </div>
+                    
+                    <textarea class="form-control" id=ownerdo-result aria-label="With textarea" placeholder="Ex: 可以執行，結果尚未驗證" required>可以執行，結果尚未驗證</textarea>
+                    <div class="invalid-feedback">用分號(;)隔開作為列點式輸入你實作的實驗結果</div>
+                
+                </div>
+
+                <!-- note -->
+                <div class="input-group">
+                    
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Note</span>
+                    </div>
+                    
+                    <textarea class="form-control" id=ownerdo-note aria-label="With textarea" placeholder="Ex: 可以執行，結果尚未驗證" required>可以執行，結果尚未驗證</textarea>
+                    <div class="invalid-feedback">用分號(;)隔開作為列點式輸入你的任意註記</div>
+                
+                </div>
+
+            </div>
+        </div>
+
+        <div id='Implement-Error' style="text-align: center;margin-bottom: 10px; color: brown;">
+
+        </div>
+
+        <div style="display: flex; justify-content: center;">
+            <button type="button" class="btn btn-outline-danger" id='implement_add_button'>Upload</button>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    document.getElementById("implement_add_button").onclick = function(){
+        let x=[]
+        for(i=0; i<5; i++){
+            x.push(document.getElementById("ownerdo").getElementsByClassName("form-control")[i].value)
+        }
+
+        for(i=0; i<3; i++){
+            x.push(document.getElementById("ownerdo-select").getElementsByClassName("custom-select")[i].value)
+        }
+
+        implement_add(x)
+        console.log(x)
+    }
+
+    function implement_add(x){
+        let formdata = new FormData();
+        col= ['Implementdate','Runtime','Source','Result', 'Note', 'OwnerID','Field','Title'
+        ]
+
+        for(i=0; i<8; i++){
+            formdata.append(col[i], x[i]);
+            console.log(col[i])
+            console.log(x[i])
+        }
+
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    fetch(location.origin + "/mltdc/tdb/api/implement_add/", requestOptions)
+        .then(response => response.json())
+        .then(result => implement_error_catch(result))
+        .catch(error => console.log('error', error));
+    }
+
+    function implement_error_catch(x){
+        console.log(x['status'])
+        if (x['status']=='OK'){
+            let status=document.querySelector('#Implement-Error')
+            status.innerHTML='新增成功'
+        }else{
+            let status=document.querySelector('#Implement-Error')
+            status.innerHTML='新增失敗'
+        }
+    }
+</script>
+
+
+<!-- signup -->
+<!-- Add Field -->
+<!-- <form id= "field_add" style='display: flex; justify-content: center;'>
+    <div style="display: flex; justify-content: center; width: 70%;">
+        
+        <div class='ownerreview field' >
+            <h1 style='margin-top: 10px;padding-left: 10px'>Add Field</h1>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Field</span>
+                    </div>
+                    <input type="text" class="form-control" id='Field' aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: Dimensionality Reduction">
+                </div>
+
+                <div id='Field-Error' style="margin-bottom: 10px;">
+
+                </div>
+
+            <button type="button" class="btn btn-outline-danger" id="field_add_button">Add</button>
+        </div>
+    </div>
+</form> -->
+
+<!-- <script>
+    document.getElementById("field_add_button").onclick = function(){
+        let x = document.getElementById("Field").value
+        field_add(x)
+        console.log(x)
+    }
+
+    function field_add(x){
+        let formdata = new FormData();
+        col= 'Field'
+        formdata.append(col, x);
+
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    fetch(location.origin + "/mltdc/tdb/api/field_add/", requestOptions)
+        .then(response => response.json())
+        .then(result => field_error_catch(result))
+        .catch(error => console.log('error', error));
+    }
+
+    function field_error_catch(x){
+        console.log(x['status'])
+        if (x['status']=='OK'){
+            let status=document.querySelector('#Field-Error')
+            status.innerHTML='新增成功'
+        }else{
+            let status=document.querySelector('#Field-Error')
+            status.innerHTML='新增失敗'
+        }
+    }
+</script> -->
+
+<!-- Add Project -->
+<!-- <form id= "project_add" style='display: flex; justify-content: center;'>
+    <div style="display: flex; justify-content: center; width: 70%;">
+        
+        <div class='ownerreview project' >
+            <h1 style='margin-top: 10px;padding-left: 10px'>Add Project</h1>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Project</span>
+                    </div>
+                    <input type="text" class="form-control" id='Project' aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: RMRS">
+                </div>
+
+                <div id='Project-Error' style="margin-bottom: 10px;">
+
+                </div>
+
+            <button type="button" class="btn btn-outline-success" id='project_add_button'>Add</button>
+        </div>
+    </div>
+</form> -->
+
+<!-- <script>
+    document.getElementById("project_add_button").onclick = function(){
+        let x = document.getElementById("Project").value
+        project_add(x)
+        console.log(x)
+    }
+
+    function project_add(x){
+        let formdata = new FormData();
+        col= 'Project'
+        formdata.append(col, x);
+
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    fetch(location.origin + "/mltdc/tdb/api/project_add/", requestOptions)
+        .then(response => response.json())
+        .then(result => project_error_catch(result))
+        .catch(error => console.log('error', error));
+    }
+
+    function project_error_catch(x){
+        console.log(x['status'])
+        if (x['status']=='OK'){
+            let status=document.querySelector('#Project-Error')
+            status.innerHTML='新增成功'
+        }else{
+            let status=document.querySelector('#Project-Error')
+            status.innerHTML='新增失敗'
+        }
+    }
+</script> -->
+
+<!-- Add Methodology -->
+<!-- <form id= "methodology_add" style='display: flex; justify-content: center;'>
+    <div style="display: flex; justify-content: center; width: 70%;">
+        
+        <div class='ownerreview methodology' >
+            <h1 style='margin-top: 10px;padding-left: 10px'>Add Methodology</h1>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Methodology</span>
+                    </div>
+                    <input type="text" class="form-control" id='Methodology' aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: Random Forest">
+                </div>
+
+                <div id='Methodology-Error' style="margin-bottom: 10px;">
+
+                </div>
+
+            <button type="button" class="btn btn-outline-primary" id='methodology_add_button'>Add</button>
+        </div>
+    </div>
+</form> -->
+
+<script>
+    document.getElementById("methodology_add_button").onclick = function(){
+        let x = document.getElementById("Methodology").value
+        methodology_add(x)
+        console.log(x)
+    }
+
+    function methodology_add(x){
+        let formdata = new FormData();
+        col= 'Methodology'
+        formdata.append(col, x);
+
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    fetch(location.origin + "/mltdc/tdb/api/methodology_add/", requestOptions)
+        .then(response => response.json())
+        .then(result => methodology_error_catch(result))
+        .catch(error => console.log('error', error));
+    }
+
+    function methodology_error_catch(x){
+        console.log(x['status'])
+        if (x['status']=='OK'){
+            let status=document.querySelector('#Methodology-Error')
+            status.innerHTML='新增成功'
+        }else{
+            let status=document.querySelector('#Methodology-Error')
+            status.innerHTML='新增失敗'
+        }
+    }
+</script>
+
+<!-- 視覺分水嶺 -->
+<!-- <div id="Odiv" onclick="show()" style="background-color: yellow;">開始點擊(紓壓用)</div>
+<script>
+    var time=0;        
+    function show(){
+        // if(time%2==0){
+
+        //     Odiv.style.background="pink";
+        //     console.log(time);
+        //     time++;
+        //     document.getElementById('Odiv').innerHTML = "點擊"+time+"次";  
+        // }else{
+            
+        //     Odiv.style.background="yellow";
+        //     console.log(time);
+        //     time++;
+        //     document.getElementById('Odiv').innerHTML = "點擊"+time+"次";  
+        // }
+        if(time<=10){
+            document.getElementById('Odiv').innerHTML = "點擊"+time+"次"
+            time++;
+        } else if (time>10 && time<=20){
+            Odiv.style.background="red";
+            document.getElementById('Odiv').innerHTML = '已點擊' + time + '次' + '，' + '你最近生活可能有輕微的壓力';  
+            time++;
+        } else if(time>20 && time<=30){
+            Odiv.style.background="blue";
+            document.getElementById('Odiv').innerHTML = '已點擊' + time + '次' + '，' + '你最近生活可能需要適度的放鬆'; 
+            time++;
+        } else if(time>30 && time<=40){
+            Odiv.style.background="purple";
+            document.getElementById('Odiv').innerHTML = '已點擊' + time + '次' + '，' + '你是不是太無聊了';
+            time++;
+        }else{
+            Odiv.style.background="white";
+            document.getElementById('Odiv').innerHTML = '已點擊' + time + '次' + '，' + '不想陪你玩了';
+            time++;
+        }
+           
+    }
+</script> -->
+
+<!-- Modify Field -->
+<!-- <form class="form-inline" style='display: flex; justify-content: center;'>
+    <label class="my-1 mr-2" for="Field-inlineFormCustomSelectPref">Modify Field</label>
+    <div class="input-group-prepend">
+        <select class="custom-select my-1 mr-sm-2" id="Field-inlineFormCustomSelectPref">
+
+            <option value=''>Choose...</option>
+            {% for field in Field %}
+                <option value='{{field}}'> {{field}} </option>
+            {% endfor %}
+    
+        </select>
+    </div>
+    <input id='Field-input' type="text" class="form-control" placeholder="Fill New Name" aria-label="" aria-describedby="basic-addon1">
+  
+    <button id='field_modify_button' type="button" class="btn btn-primary my-1">Submit</button>
+</form> -->
+
+<!-- <div id='Field-Modify-Error' style="display: flex; justify-content: center;">
+
+</div> -->
+
+<!-- <script>
+    document.getElementById("field_modify_button").onclick = function(){
+        let x = document.getElementById("Field-inlineFormCustomSelectPref").value
+        let y = document.getElementById("Field-input").value
+        field_modify(x, y)
+        console.log(x)
+        console.log(y)
+    }
+
+    function field_modify(x, y){
+        let formdata = new FormData();
+        formdata.append('Old_Field_Name', x);
+        formdata.append('New_Field_Name', y);
+
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    fetch(location.origin + "/mltdc/tdb/api/field_modify/", requestOptions)
+        .then(response => response.json())
+        .then(result => field_modify_error_catch(result))
+        .catch(error => console.log('error', error));
+    }
+
+    function field_modify_error_catch(x){
+        console.log(x['status'])
+        if (x['status']=='OK'){
+            let status=document.querySelector('#Field-Modify-Error')
+            status.innerHTML='修改成功'
+        }else{
+            let status=document.querySelector('#Field-Modify-Error')
+            status.innerHTML='修改失敗'
+        }
+    }
+</script> -->
+
+<!-- Modify Project -->
+<!-- <form class="form-inline" style='display: flex; justify-content: center;'>
+    <label class="my-1 mr-2" for="Project-inlineFormCustomSelectPref">Modify Project</label>
+    <div class="input-group-prepend">
+        <select class="custom-select my-1 mr-sm-2" id="Project-inlineFormCustomSelectPref">
+
+            <option value=''>Choose...</option>
+            {% for project in Project %}
+                <option value='{{project}}'> {{project}} </option>
+            {% endfor %}
+    
+        </select>
+    </div>
+    <input id='Project-input' type="text" class="form-control" placeholder="Fill New Name" aria-label="" aria-describedby="basic-addon1">
+  
+    <button id='project_modify_button' type="button" class="btn btn-primary my-1">Submit</button>
+</form> -->
+
+<!-- <div id='Project-Modify-Error' style="display: flex; justify-content: center;">
+
+</div> -->
+
+<!-- <script>
+    document.getElementById("project_modify_button").onclick = function(){
+        let x = document.getElementById("Project-inlineFormCustomSelectPref").value
+        let y = document.getElementById("Project-input").value
+        project_modify(x, y)
+        console.log(x)
+        console.log(y)
+    }
+
+    function project_modify(x, y){
+        let formdata = new FormData();
+        formdata.append('Old_Field_Name', x);
+        formdata.append('New_Field_Name', y);
+
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    fetch(location.origin + "/mltdc/tdb/api/project_modify/", requestOptions)
+        .then(response => response.json())
+        .then(result => project_modify_error_catch(result))
+        .catch(error => console.log('error', error));
+    }
+
+    function project_modify_error_catch(x){
+        console.log(x['status'])
+        if (x['status']=='OK'){
+            let status=document.querySelector('#Project-Modify-Error')
+            status.innerHTML='修改成功'
+        }else{
+            let status=document.querySelector('#Project-Modify-Error')
+            status.innerHTML='修改失敗'
+        }
+    }
+</script> -->
+
+<!-- Modify Methodology -->
+<!-- <form class="form-inline" style='display: flex; justify-content: center;'>
+    <label class="my-1 mr-2" for="Methodology-inlineFormCustomSelectPref">Modify Methodology</label>
+    <div class="input-group-prepend">
+        <select class="custom-select my-1 mr-sm-2" id="Methodology-inlineFormCustomSelectPref">
+
+            <option value=''>Choose...</option>
+            {% for methodology in Methodology %}
+                <option value='{{methodology}}'> {{methodology}} </option>
+            {% endfor %}
+    
+        </select>
+    </div>
+    <input id='Methodology-input' type="text" class="form-control" placeholder="Fill New Name" aria-label="" aria-describedby="basic-addon1">
+  
+    <button id='methodology_modify_button' type="button" class="btn btn-primary my-1">Submit</button>
+</form> -->
+
+<!-- <div id='Methodology-Modify-Error' style="display: flex; justify-content: center;">
+
+</div> -->
+
+<!-- <script>
+    document.getElementById("methodology_modify_button").onclick = function(){
+        let x = document.getElementById("Methodology-inlineFormCustomSelectPref").value
+        let y = document.getElementById("Methodology-input").value
+        methodology_modify(x, y)
+        console.log(x)
+        console.log(y)
+    }
+
+    function methodology_modify(x, y){
+        let formdata = new FormData();
+        formdata.append('Old_Field_Name', x);
+        formdata.append('New_Field_Name', y);
+
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    fetch(location.origin + "/mltdc/tdb/api/methodology_modify/", requestOptions)
+        .then(response => response.json())
+        .then(result => methodology_modify_error_catch(result))
+        .catch(error => console.log('error', error));
+    }
+
+    function methodology_modify_error_catch(x){
+        console.log(x['status'])
+        if (x['status']=='OK'){
+            let status=document.querySelector('#Methodology-Modify-Error')
+            status.innerHTML='修改成功'
+        }else{
+            let status=document.querySelector('#Methodology-Modify-Error')
+            status.innerHTML='修改失敗'
+        }
+    }
+</script> -->
+
+<!-- 視覺分水嶺 -->
+<!-- <div id="Odiv" onclick="show()" style="background-color: yellow;">開始點擊(紓壓用)</div>
+<script>
+    var time=0;        
+    function show(){
+        // if(time%2==0){
+
+        //     Odiv.style.background="pink";
+        //     console.log(time);
+        //     time++;
+        //     document.getElementById('Odiv').innerHTML = "點擊"+time+"次";  
+        // }else{
+            
+        //     Odiv.style.background="yellow";
+        //     console.log(time);
+        //     time++;
+        //     document.getElementById('Odiv').innerHTML = "點擊"+time+"次";  
+        // }
+        if(time<=10){
+            document.getElementById('Odiv').innerHTML = "點擊"+time+"次"
+            time++;
+        } else if (time>10 && time<=20){
+            Odiv.style.background="red";
+            document.getElementById('Odiv').innerHTML = '已點擊' + time + '次' + '，' + '你最近生活可能有輕微的壓力';  
+            time++;
+        } else if(time>20 && time<=30){
+            Odiv.style.background="blue";
+            document.getElementById('Odiv').innerHTML = '已點擊' + time + '次' + '，' + '你最近生活可能需要適度的放鬆'; 
+            time++;
+        } else if(time>30 && time<=40){
+            Odiv.style.background="purple";
+            document.getElementById('Odiv').innerHTML = '已點擊' + time + '次' + '，' + '你是不是太無聊了';
+            time++;
+        }else{
+            Odiv.style.background="white";
+            document.getElementById('Odiv').innerHTML = '已點擊' + time + '次' + '，' + '不想陪你玩了';
+            time++;
+        }
+           
+    }
+</script> -->

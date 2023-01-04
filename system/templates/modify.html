@@ -1,0 +1,1028 @@
+{% extends "base.html" %}
+{% block mainBody %}
+
+<!-- Add Field -->
+<!-- <form id= "field_add" style='display: flex; justify-content: center;'>
+    <div style="display: flex; justify-content: center; width: 70%;">
+        
+        <div class='ownerreview field' >
+            <h1 style='margin-top: 10px;padding-left: 10px'>Add Field</h1>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Field</span>
+                    </div>
+                    <input type="text" class="form-control" id='Field' aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: Dimensionality Reduction">
+                </div>
+
+                <div id='Field-Error' style="margin-bottom: 10px;">
+
+                </div>
+
+            <button type="button" class="btn btn-outline-danger" id="field_add_button">Add</button>
+        </div>
+    </div>
+</form> -->
+
+<!-- <script>
+    document.getElementById("field_add_button").onclick = function(){
+        let x = document.getElementById("Field").value
+        field_add(x)
+        console.log(x)
+    }
+
+    function field_add(x){
+        let formdata = new FormData();
+        col= 'Field'
+        formdata.append(col, x);
+
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    fetch(location.origin + "/mltdc/tdb/api/field_add/", requestOptions)
+        .then(response => response.json())
+        .then(result => field_error_catch(result))
+        .catch(error => console.log('error', error));
+    }
+
+    function field_error_catch(x){
+        console.log(x['status'])
+        if (x['status']=='OK'){
+            let status=document.querySelector('#Field-Error')
+            status.innerHTML='新增成功'
+        }else{
+            let status=document.querySelector('#Field-Error')
+            status.innerHTML='新增失敗'
+        }
+    }
+</script> -->
+
+<!-- Add Project -->
+<!-- <form id= "project_add" style='display: flex; justify-content: center;'>
+    <div style="display: flex; justify-content: center; width: 70%;">
+        
+        <div class='ownerreview project' >
+            <h1 style='margin-top: 10px;padding-left: 10px'>Add Project</h1>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Project</span>
+                    </div>
+                    <input type="text" class="form-control" id='Project' aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: RMRS">
+                </div>
+
+                <div id='Project-Error' style="margin-bottom: 10px;">
+
+                </div>
+
+            <button type="button" class="btn btn-outline-success" id='project_add_button'>Add</button>
+        </div>
+    </div>
+</form> -->
+
+<!-- <script>
+    document.getElementById("project_add_button").onclick = function(){
+        let x = document.getElementById("Project").value
+        project_add(x)
+        console.log(x)
+    }
+
+    function project_add(x){
+        let formdata = new FormData();
+        col= 'Project'
+        formdata.append(col, x);
+
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    fetch(location.origin + "/mltdc/tdb/api/project_add/", requestOptions)
+        .then(response => response.json())
+        .then(result => project_error_catch(result))
+        .catch(error => console.log('error', error));
+    }
+
+    function project_error_catch(x){
+        console.log(x['status'])
+        if (x['status']=='OK'){
+            let status=document.querySelector('#Project-Error')
+            status.innerHTML='新增成功'
+        }else{
+            let status=document.querySelector('#Project-Error')
+            status.innerHTML='新增失敗'
+        }
+    }
+</script> -->
+
+<!-- Add Methodology -->
+<!-- <form id= "methodology_add" style='display: flex; justify-content: center;'>
+    <div style="display: flex; justify-content: center; width: 70%;">
+        
+        <div class='ownerreview methodology' >
+            <h1 style='margin-top: 10px;padding-left: 10px'>Add Methodology</h1>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Methodology</span>
+                    </div>
+                    <input type="text" class="form-control" id='Methodology' aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: Random Forest">
+                </div>
+
+                <div id='Methodology-Error' style="margin-bottom: 10px;">
+
+                </div>
+
+            <button type="button" class="btn btn-outline-primary" id='methodology_add_button'>Add</button>
+        </div>
+    </div>
+</form> -->
+
+<!-- <script>
+    document.getElementById("methodology_add_button").onclick = function(){
+        let x = document.getElementById("Methodology").value
+        methodology_add(x)
+        console.log(x)
+    }
+
+    function methodology_add(x){
+        let formdata = new FormData();
+        col= 'Methodology'
+        formdata.append(col, x);
+
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    fetch(location.origin + "/mltdc/tdb/api/methodology_add/", requestOptions)
+        .then(response => response.json())
+        .then(result => methodology_error_catch(result))
+        .catch(error => console.log('error', error));
+    }
+
+    function methodology_error_catch(x){
+        console.log(x['status'])
+        if (x['status']=='OK'){
+            let status=document.querySelector('#Methodology-Error')
+            status.innerHTML='新增成功'
+        }else{
+            let status=document.querySelector('#Methodology-Error')
+            status.innerHTML='新增失敗'
+        }
+    }
+</script> -->
+
+<!-- 視覺分水嶺 -->
+<!-- <div id="Odiv" onclick="show()" style="background-color: yellow;">開始點擊(紓壓用)</div>
+<script>
+    var time=0;        
+    function show(){
+        // if(time%2==0){
+
+        //     Odiv.style.background="pink";
+        //     console.log(time);
+        //     time++;
+        //     document.getElementById('Odiv').innerHTML = "點擊"+time+"次";  
+        // }else{
+            
+        //     Odiv.style.background="yellow";
+        //     console.log(time);
+        //     time++;
+        //     document.getElementById('Odiv').innerHTML = "點擊"+time+"次";  
+        // }
+        if(time<=10){
+            document.getElementById('Odiv').innerHTML = "點擊"+time+"次"
+            time++;
+        } else if (time>10 && time<=20){
+            Odiv.style.background="red";
+            document.getElementById('Odiv').innerHTML = '已點擊' + time + '次' + '，' + '你最近生活可能有輕微的壓力';  
+            time++;
+        } else if(time>20 && time<=30){
+            Odiv.style.background="blue";
+            document.getElementById('Odiv').innerHTML = '已點擊' + time + '次' + '，' + '你最近生活可能需要適度的放鬆'; 
+            time++;
+        } else if(time>30 && time<=40){
+            Odiv.style.background="purple";
+            document.getElementById('Odiv').innerHTML = '已點擊' + time + '次' + '，' + '你是不是太無聊了';
+            time++;
+        }else{
+            Odiv.style.background="white";
+            document.getElementById('Odiv').innerHTML = '已點擊' + time + '次' + '，' + '不想陪你玩了';
+            time++;
+        }
+           
+    }
+</script> -->
+
+<!-- Modify Field -->
+<!-- <form class="form-inline" style='display: flex; justify-content: center;'>
+    <label class="my-1 mr-2" for="Field-inlineFormCustomSelectPref">Modify Field</label>
+    <div class="input-group-prepend">
+        <select class="custom-select my-1 mr-sm-2" id="Field-inlineFormCustomSelectPref">
+
+            <option value=''>Choose...</option>
+            {% for field in Field %}
+                <option value='{{field}}'> {{field}} </option>
+            {% endfor %}
+    
+        </select>
+    </div>
+    <input id='Field-input' type="text" class="form-control" placeholder="Fill New Name" aria-label="" aria-describedby="basic-addon1">
+  
+    <button id='field_modify_button' type="button" class="btn btn-primary my-1">Submit</button>
+</form> -->
+
+<!-- <div id='Field-Modify-Error' style="display: flex; justify-content: center;">
+
+</div> -->
+
+<!-- <script>
+    document.getElementById("field_modify_button").onclick = function(){
+        let x = document.getElementById("Field-inlineFormCustomSelectPref").value
+        let y = document.getElementById("Field-input").value
+        field_modify(x, y)
+        console.log(x)
+        console.log(y)
+    }
+
+    function field_modify(x, y){
+        let formdata = new FormData();
+        formdata.append('Old_Field_Name', x);
+        formdata.append('New_Field_Name', y);
+
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    fetch(location.origin + "/mltdc/tdb/api/field_modify/", requestOptions)
+        .then(response => response.json())
+        .then(result => field_modify_error_catch(result))
+        .catch(error => console.log('error', error));
+    }
+
+    function field_modify_error_catch(x){
+        console.log(x['status'])
+        if (x['status']=='OK'){
+            let status=document.querySelector('#Field-Modify-Error')
+            status.innerHTML='修改成功'
+        }else{
+            let status=document.querySelector('#Field-Modify-Error')
+            status.innerHTML='修改失敗'
+        }
+    }
+</script> -->
+
+<!-- Modify Project -->
+<!-- <form class="form-inline" style='display: flex; justify-content: center;'>
+    <label class="my-1 mr-2" for="Project-inlineFormCustomSelectPref">Modify Project</label>
+    <div class="input-group-prepend">
+        <select class="custom-select my-1 mr-sm-2" id="Project-inlineFormCustomSelectPref">
+
+            <option value=''>Choose...</option>
+            {% for project in Project %}
+                <option value='{{project}}'> {{project}} </option>
+            {% endfor %}
+    
+        </select>
+    </div>
+    <input id='Project-input' type="text" class="form-control" placeholder="Fill New Name" aria-label="" aria-describedby="basic-addon1">
+  
+    <button id='project_modify_button' type="button" class="btn btn-primary my-1">Submit</button>
+</form> -->
+
+<!-- <div id='Project-Modify-Error' style="display: flex; justify-content: center;">
+
+</div> -->
+
+<!-- <script>
+    document.getElementById("project_modify_button").onclick = function(){
+        let x = document.getElementById("Project-inlineFormCustomSelectPref").value
+        let y = document.getElementById("Project-input").value
+        project_modify(x, y)
+        console.log(x)
+        console.log(y)
+    }
+
+    function project_modify(x, y){
+        let formdata = new FormData();
+        formdata.append('Old_Field_Name', x);
+        formdata.append('New_Field_Name', y);
+
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    fetch(location.origin + "/mltdc/tdb/api/project_modify/", requestOptions)
+        .then(response => response.json())
+        .then(result => project_modify_error_catch(result))
+        .catch(error => console.log('error', error));
+    }
+
+    function project_modify_error_catch(x){
+        console.log(x['status'])
+        if (x['status']=='OK'){
+            let status=document.querySelector('#Project-Modify-Error')
+            status.innerHTML='修改成功'
+        }else{
+            let status=document.querySelector('#Project-Modify-Error')
+            status.innerHTML='修改失敗'
+        }
+    }
+</script> -->
+
+<!-- Modify Methodology -->
+<!-- <form class="form-inline" style='display: flex; justify-content: center;'>
+    <label class="my-1 mr-2" for="Methodology-inlineFormCustomSelectPref">Modify Methodology</label>
+    <div class="input-group-prepend">
+        <select class="custom-select my-1 mr-sm-2" id="Methodology-inlineFormCustomSelectPref">
+
+            <option value=''>Choose...</option>
+            {% for methodology in Methodology %}
+                <option value='{{methodology}}'> {{methodology}} </option>
+            {% endfor %}
+    
+        </select>
+    </div>
+    <input id='Methodology-input' type="text" class="form-control" placeholder="Fill New Name" aria-label="" aria-describedby="basic-addon1">
+  
+    <button id='methodology_modify_button' type="button" class="btn btn-primary my-1">Submit</button>
+</form> -->
+
+<!-- <div id='Methodology-Modify-Error' style="display: flex; justify-content: center;">
+
+</div> -->
+
+<!-- <script>
+    document.getElementById("methodology_modify_button").onclick = function(){
+        let x = document.getElementById("Methodology-inlineFormCustomSelectPref").value
+        let y = document.getElementById("Methodology-input").value
+        methodology_modify(x, y)
+        console.log(x)
+        console.log(y)
+    }
+
+    function methodology_modify(x, y){
+        let formdata = new FormData();
+        formdata.append('Old_Field_Name', x);
+        formdata.append('New_Field_Name', y);
+
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    fetch(location.origin + "/mltdc/tdb/api/methodology_modify/", requestOptions)
+        .then(response => response.json())
+        .then(result => methodology_modify_error_catch(result))
+        .catch(error => console.log('error', error));
+    }
+
+    function methodology_modify_error_catch(x){
+        console.log(x['status'])
+        if (x['status']=='OK'){
+            let status=document.querySelector('#Methodology-Modify-Error')
+            status.innerHTML='修改成功'
+        }else{
+            let status=document.querySelector('#Methodology-Modify-Error')
+            status.innerHTML='修改失敗'
+        }
+    }
+</script> -->
+
+<!-- 視覺分水嶺 -->
+<!-- <div id="Odiv" onclick="show()" style="background-color: yellow;">開始點擊(紓壓用)</div>
+<script>
+    var time=0;        
+    function show(){
+        // if(time%2==0){
+
+        //     Odiv.style.background="pink";
+        //     console.log(time);
+        //     time++;
+        //     document.getElementById('Odiv').innerHTML = "點擊"+time+"次";  
+        // }else{
+            
+        //     Odiv.style.background="yellow";
+        //     console.log(time);
+        //     time++;
+        //     document.getElementById('Odiv').innerHTML = "點擊"+time+"次";  
+        // }
+        if(time<=10){
+            document.getElementById('Odiv').innerHTML = "點擊"+time+"次"
+            time++;
+        } else if (time>10 && time<=20){
+            Odiv.style.background="red";
+            document.getElementById('Odiv').innerHTML = '已點擊' + time + '次' + '，' + '你最近生活可能有輕微的壓力';  
+            time++;
+        } else if(time>20 && time<=30){
+            Odiv.style.background="blue";
+            document.getElementById('Odiv').innerHTML = '已點擊' + time + '次' + '，' + '你最近生活可能需要適度的放鬆'; 
+            time++;
+        } else if(time>30 && time<=40){
+            Odiv.style.background="purple";
+            document.getElementById('Odiv').innerHTML = '已點擊' + time + '次' + '，' + '你是不是太無聊了';
+            time++;
+        }else{
+            Odiv.style.background="white";
+            document.getElementById('Odiv').innerHTML = '已點擊' + time + '次' + '，' + '不想陪你玩了';
+            time++;
+        }
+           
+    }
+</script> -->
+
+
+
+
+<h1 style="display: flex;justify-content: center;">Naming Mapping</h1>
+
+<!-- table -->
+<!-- <div class="accordion" id="accordionExample">
+
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Field Name
+                </button>
+            </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="content-add-level">
+                    <table id='content-add'>
+                        <thead >
+                            <tr>
+                                <th>Old Name</th>
+                                <th>New Name</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="name">Doe, John</td>
+                                <td class="data">Sample Data</td>
+                                <td class="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+                                <td class="trash"><i class="fa fa-trash" aria-hidden="true"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Smith, Jane</td>
+                                <td class="data">Another Sample</td>
+                                <td class="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+                                <td class="trash"><i class="fa fa-trash" aria-hidden="true"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="name">T, Mister</td>
+                                <td class="data">Samples are Best in Threes.</td>
+                                <td class="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+                                <td class="trash"><i class="fa fa-trash" aria-hidden="true"></i></td>
+                            </tr>
+                            <tr class="add-row">
+                                <td colspan="4" class="new-row"><span><i class="fa fa-plus" aria-hidden="true"></i> Add New Row</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Project Name
+            </button>
+        </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="content-add-level">
+                    <table id='content-add'>
+                        <thead >
+                            <tr>
+                                <th>Old Name</th>
+                                <th>New Name</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="name">Doe</td>
+                                <td class="data">Sample</td>
+                                <td class="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+                                <td class="trash"><i class="fa fa-trash" aria-hidden="true"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Smith</td>
+                                <td class="data">Another</td>
+                                <td class="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+                                <td class="trash"><i class="fa fa-trash" aria-hidden="true"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="name">T</td>
+                                <td class="data">Samples are Best in Threes.</td>
+                                <td class="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+                                <td class="trash"><i class="fa fa-trash" aria-hidden="true"></i></td>
+                            </tr>
+                            <tr class="add-row">
+                                <td colspan="4" class="new-row"><span><i class="fa fa-plus" aria-hidden="true"></i> Add New Row</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingThree">
+        <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Methodology Name
+            </button>
+        </h2>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="content-add-level">
+                    <table id='content-add'>
+                        <thead >
+                            <tr>
+                                <th>Old Name</th>
+                                <th>New Name</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="name">Doe, John</td>
+                                <td class="data">Sample Data</td>
+                                <td class="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+                                <td class="trash"><i class="fa fa-trash" aria-hidden="true"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="name">Smith, Jane</td>
+                                <td class="data">Another Sample</td>
+                                <td class="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+                                <td class="trash"><i class="fa fa-trash" aria-hidden="true"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="name">T, Mister</td>
+                                <td class="data">Samples are Best in Threes.</td>
+                                <td class="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+                                <td class="trash"><i class="fa fa-trash" aria-hidden="true"></i></td>
+                            </tr>
+                            <tr class="add-row">
+                                <td colspan="4" class="new-row"><span><i class="fa fa-plus" aria-hidden="true"></i> Add New Row</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> -->
+
+<div class="accordion" id="accordionExample">
+    
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Field Name
+                </button>
+            </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="content-add-level">
+                    <table id='content-add'>
+                        <thead >
+                            <tr>
+                                <th>Old Name</th>
+                                <th>New Name</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {% for field in Field %}
+                            <tr>
+                                <td class="name"> {{field}} </td>
+                                <td class="data"> {{field}} </td>
+                                <td class="edit edit-field"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+                                <td class="trash trash-field"><i class="fa fa-trash" aria-hidden="true"></i></td>
+                            </tr>
+                            {% endfor %}
+                           
+                            <tr class="add-row">
+                                <td colspan="4" class="new-row field"><span><i class="fa fa-plus" aria-hidden="true"></i> Add New Row</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Project Name
+                </button>
+            </h2>
+        </div>
+
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="content-add-level">
+                    <table id='content-add'>
+                        <thead >
+                            <tr>
+                                <th>Old Name</th>
+                                <th>New Name</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {% for project in Project %}
+                            <tr>
+                                <td class="name"> {{project}} </td>
+                                <td class="data"> {{project}} </td>
+                                <td class="edit edit-project"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+                                <td class="trash trash-project"><i class="fa fa-trash" aria-hidden="true"></i></td>
+                            </tr>
+                            {% endfor %}
+
+                            <tr class="add-row">
+                                <td colspan="4" class="new-row project"><span><i class="fa fa-plus" aria-hidden="true"></i> Add New Row</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Methodology Name
+                </button>
+            </h2>
+        </div>
+
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="content-add-level">
+                    <table id='content-add'>
+                        <thead >
+                            <tr>
+                                <th>Old Name</th>
+                                <th>New Name</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            {% for methodology in Methodology %}
+                            <tr>
+                                <td class="name"> {{methodology}} </td>
+                                <td class="data"> {{methodology}} </td>
+                                <td class="edit edit-methodology"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+                                <td class="trash trash-methodology"><i class="fa fa-trash" aria-hidden="true"></i></td>
+                            </tr>
+                            {% endfor %}
+
+                            <tr class="add-row">
+                                <td colspan="4" class="new-row methodology"><span><i class="fa fa-plus" aria-hidden="true"></i> Add New Row</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+  <script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script>
+    var isEditing = false,
+	tempNameValue = "",
+	tempDataValue = "";
+
+// Handles live/dynamic element events, i.e. for newly created edit buttons
+$(document).on('click', '.edit', function() {
+	var parentRow = $(this).closest('tr'),
+		tableBody = parentRow.closest('tbody'),
+		tdName = parentRow.children('td.name'),
+		tdData = parentRow.children('td.data'),
+        tdedit = parentRow.children('td.edit').text();
+        console.log(tdedit)
+	if (isEditing && tdedit!='Edit') {
+		var nameInput = tableBody.find('input[name="name"]'),
+            nameInput = tableBody.find('span[class="name"]'),
+			dataInput = tableBody.find('input[name="data"]'),
+            // dataInput = parentRow.find('input[name="data"]'),
+			tdNameInput = nameInput.closest('td'),
+			tdDataInput = dataInput.closest('td'),
+			currentEdit = tdNameInput.parent().find('td.edit');
+            
+            form = new FormData();
+
+		if ($(this).is(currentEdit)) {
+			// Save new values as static html
+			var tdNameValue = nameInput.text().trim(),
+				tdDataValue = dataInput.prop('value').trim();
+
+            form.append("name", tdNameValue);
+            form.append("data", tdDataValue);
+
+			tdNameInput.empty();
+			tdDataInput.empty();
+
+			// tdNameInput.html(tdNameValue);
+            tdNameInput.html(tdDataValue);
+			// tdDataInput.html(tdDataValue);
+            tdDataInput.html('...');
+		} else {
+			// Restore previous html values
+			tdNameInput.empty();
+			tdDataInput.empty();
+
+			tdNameInput.html(tempNameValue);
+            // tdNameInput.html(tempDataValue);
+			tdDataInput.html(tempDataValue);
+            // tdDataInput.html("...");
+
+            form.append("name", tempNameValue);
+            form.append("data", tempDataValue);
+		}
+		
+		
+		// Display static row
+		currentEdit.html('<i class="fa fa-pencil-square-o" aria-hidden="true"></i>');
+		isEditing = false;
+
+        if ($(this).attr('class')=='edit edit-field'){
+        var settings = {
+            "url": location.origin + "/mltdc/tdb/api/field_modify/",
+            "method": "POST",
+            "timeout": 0,
+            "processData": false,
+            "mimeType": "multipart/form-data",
+            "contentType": false,
+            "data": form
+            };
+        } else if ($(this).attr('class')=='edit edit-project'){
+            var settings = {
+                "url": location.origin + "/mltdc/tdb/api/project_modify/",
+                "method": "POST",
+                "timeout": 0,
+                "processData": false,
+                "mimeType": "multipart/form-data",
+                "contentType": false,
+                "data": form
+            };
+        } else if ($(this).attr('class')=='edit edit-methodology'){
+            var settings = {
+                "url": location.origin + "/mltdc/tdb/api/methodology_modify/",
+                "method": "POST",
+                "timeout": 0,
+                "processData": false,
+                "mimeType": "multipart/form-data",
+                "contentType": false,
+                "data": form
+            };
+        }
+
+        $.ajax(settings).done(function (response) {
+        console.log(response);
+        });
+	} else if((isEditing && tdedit=='Edit')){
+		// Display editable input row
+		isEditing = true;
+		$(this).html('<i class="fa fa-floppy-o" aria-hidden="true"></i>');
+
+		var tdNameValue = tdName.html(),
+			tdDataValue = tdData.html();
+
+		// Save current html values for canceling an edit
+		tempNameValue = tdNameValue;
+		tempDataValue = tdDataValue;
+
+		// Remove existing html values
+		tdName.empty();
+		tdData.empty();
+		// Create input forms
+		// tdName.html('<input type="text" name="name" value="' + tdNameValue + '">');
+        tdName.html("<span class='name'>" + tdNameValue);
+		// tdData.html('<input type="text" name="data" value="' + tdDataValue + '">');
+        tdData.html('<input type="text" name="data" value="' + '' + '">');
+
+    }
+    else {
+		// Display editable input row
+		isEditing = true;
+		$(this).html('<i class="fa fa-floppy-o" aria-hidden="true"></i>');
+
+		var tdNameValue = tdName.html(),
+			tdDataValue = tdData.html();
+
+		// Save current html values for canceling an edit
+		tempNameValue = tdNameValue;
+		tempDataValue = tdDataValue;
+
+		// Remove existing html values
+		tdName.empty();
+		tdData.empty();
+		// Create input forms
+		// tdName.html('<input type="text" name="name" value="' + tdNameValue + '">');
+        tdName.html("<span class='name'>" + tdNameValue);
+		// tdData.html('<input type="text" name="data" value="' + tdDataValue + '">');
+        tdData.html('<input type="text" name="data" value="' + '' + '">');
+	}
+
+    // if ($(this).attr('class')=='edit edit-field'){
+    //     var settings = {
+    //         "url": "http://127.0.0.1:8000/mltdc/tdb/api/field_modify/",
+    //         "method": "POST",
+    //         "timeout": 0,
+    //         "processData": false,
+    //         "mimeType": "multipart/form-data",
+    //         "contentType": false,
+    //         "data": form
+    //         };
+    // } else if ($(this).attr('class')=='edit edit-project'){
+    //     var settings = {
+    //         "url": "http://127.0.0.1:8000/mltdc/tdb/api/project_modify/",
+    //         "method": "POST",
+    //         "timeout": 0,
+    //         "processData": false,
+    //         "mimeType": "multipart/form-data",
+    //         "contentType": false,
+    //         "data": form
+    //     };
+    // } else if ($(this).attr('class')=='edit edit-methodology'){
+    //     var settings = {
+    //         "url": "http://127.0.0.1:8000/mltdc/tdb/api/methodology_modify/",
+    //         "method": "POST",
+    //         "timeout": 0,
+    //         "processData": false,
+    //         "mimeType": "multipart/form-data",
+    //         "contentType": false,
+    //         "data": form
+    //     };
+    // }
+
+    // $.ajax(settings).done(function (response) {
+    // console.log(response);
+    // });
+});
+
+// Handles live/dynamic element events, i.e. for newly created trash buttons
+$(document).on('click', '.trash', function() {
+	// Turn off editing if row is current input
+	if (isEditing) {
+		var parentRow = $(this).closest('tr'),
+			tableBody = parentRow.closest('tbody'),
+			tdInput = tableBody.find('input').closest('td'),
+			currentEdit = tdInput.parent().find('td.edit'),
+			thisEdit = parentRow.find('td.edit'),
+
+            nameInput = parentRow.children('td.name'),
+            tdNameValue = nameInput.text().trim();
+            
+            console.log(tdNameValue)
+
+            form = new FormData();
+            form.append("name", tdNameValue);
+
+		if (thisEdit.is(thisEdit)) {
+			isEditing = false;
+		}
+	}
+    var parentRow = $(this).closest('tr'),
+        tableBody = parentRow.closest('tbody'),
+        tdInput = tableBody.find('input').closest('td'),
+        currentEdit = tdInput.parent().find('td.edit'),
+        thisEdit = parentRow.find('td.edit'),
+
+        nameInput = parentRow.children('td.name'),
+        tdNameValue = nameInput.text().trim();
+
+        console.log(tdNameValue)
+
+        form = new FormData();
+        form.append("name", tdNameValue);
+
+    if ($(this).attr('class')=='trash trash-field'){
+        var settings = {
+            "url": location.origin + "/mltdc/tdb/api/field_delete/",
+            "method": "POST",
+            "timeout": 0,
+            "processData": false,
+            "mimeType": "multipart/form-data",
+            "contentType": false,
+            "data": form
+            };
+        } else if ($(this).attr('class')=='trash trash-project'){
+            var settings = {
+                "url": location.origin + "/mltdc/tdb/api/project_delete/",
+                "method": "POST",
+                "timeout": 0,
+                "processData": false,
+                "mimeType": "multipart/form-data",
+                "contentType": false,
+                "data": form
+            };
+        } else if ($(this).attr('class')=='trash trash-methodology'){
+            var settings = {
+                "url": location.origin + "/mltdc/tdb/api/methodology_delete/",
+                "method": "POST",
+                "timeout": 0,
+                "processData": false,
+                "mimeType": "multipart/form-data",
+                "contentType": false,
+                "data": form
+            };
+        }
+
+        $.ajax(settings).done(function (response) {
+        console.log(response);
+        });
+	// Remove selected row from table
+	$(this).closest('tr').remove();
+});
+
+$('.new-row').on('click', function() {
+	var tableBody = $(this).closest('tbody');
+		// trNew = '<tr><td class="name"><input type="text" name="name" value=""></td><td class="data"><input type="text" name="data" value=""></td><td class="edit"><i class="fa fa-floppy-o" aria-hidden="true"></i></td><td class="trash"><i class="fa fa-trash" aria-hidden="true"></i></td></tr>';
+    if ($(this).attr('class')=='new-row field'){
+        var trNew = '<tr><td class="name"><span class="name">...</span></td><td class="data"><input type="text" name="data" value=""></td><td class="edit edit-field"><i class="fa fa-floppy-o" aria-hidden="true"></i></td><td class="trash trash-field"><i class="fa fa-trash" aria-hidden="true"></i></td></tr>';
+    }else if($(this).attr('class')=='new-row project'){
+        var trNew = '<tr><td class="name"><span class="name">...</span></td><td class="data"><input type="text" name="data" value=""></td><td class="edit edit-project"><i class="fa fa-floppy-o" aria-hidden="true"></i></td><td class="trash trash-project"><i class="fa fa-trash" aria-hidden="true"></i></td></tr>';
+    }else if($(this).attr('class')=='new-row methodology'){
+        var trNew = '<tr><td class="name"><span class="name">...</span></td><td class="data"><input type="text" name="data" value=""></td><td class="edit edit-methodology"><i class="fa fa-floppy-o" aria-hidden="true"></i></td><td class="trash trash-methodology"><i class="fa fa-trash" aria-hidden="true"></i></td></tr>';
+    } 
+	if (isEditing) {
+		var nameInput = tableBody.find('input[name="name"]'),
+            nameInput = tableBody.find('span[class="name"]'),
+			dataInput = tableBody.find('input[name="data"]'),
+			tdNameInput = nameInput.closest('td'),
+			tdDataInput = dataInput.closest('td'),
+			currentEdit = tdNameInput.parent().find('td.edit');
+
+		// Get current input values for newly created input cases
+		var newNameInput = nameInput.prop('value'),
+			newDataInput = dataInput.prop('value');
+
+		// Restore previous html values
+		tdNameInput.empty();
+		tdDataInput.empty();
+
+		tdNameInput.html(newNameInput);
+		tdDataInput.html(newDataInput);
+
+		// Display static row
+		currentEdit.html('Edit');
+	}
+
+	isEditing = true;
+	tableBody.find('tr:last').before(trNew);
+});
+</script>
+{% endblock mainBody %}

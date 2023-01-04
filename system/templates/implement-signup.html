@@ -1,0 +1,253 @@
+{% extends "base.html" %}
+{% block mainBody %}
+
+<div id="implement-input">
+    <h1>Owner Do</h1>
+
+    <form class="was-validated">
+
+        <div id='ownerdo-select'> 
+
+            {% comment %}
+            <!-- ownerid select-->
+            <div class="form-group" style='padding-left: 10px; margin: 10px;'>
+                <select class="custom-select" required>
+                <option value="">Choose the ownerid</option>
+
+                {% for ownerid in OwnerID %}
+                    <option value='{{ownerid}}'> {{ownerid}} </option>
+                {% endfor %}
+
+                </select>
+                <div class="invalid-feedback">選擇你的工號</div>
+            </div>
+            {% endcomment %}
+
+            <!-- Field select-->
+            <div class="form-group" style='padding-left: 10px; margin: 10px;'>
+                <select class="custom-select" required>
+                <option value="">Choose the Field</option>
+
+                {% for field in Field %}
+                    <option value='{{field}}'> {{field}} </option>
+                {% endfor %}
+
+                </select>
+                <div class="invalid-feedback">選擇論文的領域</div>
+            </div>
+
+            <!-- Paper select-->
+            <!-- <div class="form-group" style='padding-left: 10px; margin: 10px;'>
+                <select class="custom-select" required>
+                <option value="">Choose the Paper</option>
+
+                {% for paper in Paper %}
+                    <option value='{{paper}}'> {{paper}} </option>
+                {% endfor %}
+
+                </select>
+                <div class="invalid-feedback">選擇論文的名稱</div>
+            </div> -->
+            <div class="form-group" style='padding-left: 10px; margin: 10px;'>
+                <select class="custom-select" id="multiple-checkboxes" multiple="multiple" required>
+                <!-- <option value="">Choose the Paper</option> -->
+
+                {% for paper in Paper %}
+                    <option value='{{paper}}'> {{paper}} </option>
+                {% endfor %}
+
+                </select>
+                <div class="invalid-feedback">選擇論文的名稱</div>
+            </div>
+
+            <!-- project select -->
+            <div class="form-group" style='padding-left: 10px; margin: 10px;'>
+                <select class="custom-select" required>
+                <option value="">Choose the Project</option>
+                <!-- <option value='nothing'> 無 </option> -->
+
+                {% for project in Project %}
+                    <option value='{{project}}'> {{project}} </option>
+                {% endfor %}
+
+                </select>
+                <div class="invalid-feedback">選擇論文的應用專案</div>
+            </div>
+
+        </div>
+
+
+
+        <div id=ownerdo>
+
+            <!-- ownerdo-short -->
+            <div class='ownerdo-short'>
+
+                <!-- 實作日期 -->
+                <div class="input-group input-group-sm mb-3">
+                    
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Implementdate</span>
+                    </div>
+                    
+                    <input type="text" class="form-control" id=ownerdo-Implementdate aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: 2022-08-31" value="2022-08-31" required>
+                    <div class="invalid-feedback">輸入你開始實作的日期(用-隔開)</div>
+                
+                </div>
+
+                <!-- runtime -->
+                <div class="input-group input-group-sm mb-3">
+                    
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Runtime</span>
+                    </div>
+                    
+                    <input type="text" class="form-control" id=ownerdo-Runtime aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: 1.5" value="1.5" required>
+                    <div class="invalid-feedback">輸入你實作的運行時間(hr)(從raw data 到 output)</div>
+                
+                </div>
+
+                <!-- source -->
+                <div class="input-group input-group-sm mb-3">
+                    
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Source</span>
+                    </div>
+                    
+                    <input type="text" class="form-control" id=ownerdo-Source aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Ex: https://github.com/salesforce/ETSformer"  value="https://github.com/salesforce/ETSformer" required>
+                    <div class="invalid-feedback">輸入分析資料的路徑或網址</div>
+                
+                </div>
+
+            </div>
+
+            <!-- ownerdo-long -->
+            <div class='ownerdo-long'>
+
+                <!-- result -->
+                <div class="input-group">
+                    
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Result</span>
+                    </div>
+                    
+                    <textarea class="form-control" id=ownerdo-result aria-label="With textarea" placeholder="Ex: 可以執行，結果尚未驗證" required>可以執行，結果尚未驗證</textarea>
+                    <div class="invalid-feedback">用分號(;)隔開作為列點式輸入你實作的實驗結果</div>
+                
+                </div>
+
+                <!-- note -->
+                <div class="input-group">
+                    
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Note</span>
+                    </div>
+                    
+                    <textarea class="form-control" id=ownerdo-note aria-label="With textarea" placeholder="Ex: 可以執行，結果尚未驗證" required>可以執行，結果尚未驗證</textarea>
+                    <div class="invalid-feedback">用分號(;)隔開作為列點式輸入你的任意註記</div>
+                
+                </div>
+
+            </div>
+        </div>
+
+        <div id='Implement-Error' style="text-align: center;margin-bottom: 10px; color: brown;">
+
+        </div>
+
+        <div style="display: flex; justify-content: center;">
+            <button type="button" class="btn btn-outline-danger" id='implement_add_button'>Upload</button>
+        </div>
+
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+<script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.12/js/bootstrap-multiselect.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.12/css/bootstrap-multiselect.css">
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#multiple-checkboxes').multiselect({
+        buttonContainer: '<div class="btn-group" />',
+        nonSelectedText: 'Choose the Paper',
+        includeSelectAllOption: true,
+        enableFiltering: true,
+        inheritClass: true,
+        buttonWidth: '800px',
+        maxHeight: 200
+    });
+});
+</script>
+
+<script>
+    document.getElementById("implement_add_button").onclick = function(){
+        let x=[]
+        for(i=0; i<5; i++){
+            x.push(document.getElementById("ownerdo").getElementsByClassName("form-control")[i].value)
+        }
+
+        x.push(sessionStorage.getItem('ownerid'))
+        for(i=0; i<4; i++){
+            x.push(document.getElementById("ownerdo-select").getElementsByClassName("custom-select")[i].value)
+        }
+        
+        implement_add(x.filter(function(item){return item != ""}))
+        console.log(x)
+    }
+
+    function implement_add(x){
+        let formdata = new FormData();
+        col= ['Implementdate','Runtime','Source','Result', 'Note', 'OwnerID','Field','Title', 'Project'
+        ]
+
+        let multi_select = $(".multiselect.dropdown-toggle.btn.btn-default.custom-select").attr("title")
+        x[7] = multi_select
+        for(i=0; i<9; i++){
+            formdata.append(col[i], x[i]);
+            console.log(col[i])
+            console.log(x[i])
+        }
+
+        var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    fetch(location.origin + "/mltdc/tdb/api/implement_add/", requestOptions)
+        .then(response => response.json())
+        .then(result => implement_error_catch(result))
+        .catch(error => console.log('error', error));
+    }
+
+    function implement_error_catch(x){
+        console.log(x['status'])
+        if (x['status']=='OK'){
+            let status=document.querySelector('#Implement-Error')
+            status.innerHTML='新增成功'
+        }else{
+            let status=document.querySelector('#Implement-Error')
+            status.innerHTML='新增失敗'
+        }
+    }
+</script>
+
+
+
+{% endblock mainBody %}
