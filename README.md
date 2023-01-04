@@ -1,2 +1,2 @@
 # PaperSystem
-Toy System
+Toy System with Django Framework
